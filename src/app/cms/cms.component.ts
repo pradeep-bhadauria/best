@@ -225,8 +225,8 @@ export class CmsComponent implements OnInit {
   saveBlog() {
     if (this.validate()) {
       document.getElementById("save").setAttribute("disabled", "disabled");
+      Constants.showLoader();
       if (this.image != null) {
-        Constants.showLoader();
         if (this.article_id == null) {
           this.addArticle();
         } else {
