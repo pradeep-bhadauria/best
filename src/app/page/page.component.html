@@ -1,0 +1,88 @@
+<div class="single_post_content">
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li *ngIf="category != null" [ngClass]="{'active': subcategory === null}"><a href="/articles/{{category | lowercase}}">{{category | titlecase}}</a></li>
+      <li *ngIf="subcategory != null" [ngClass]="{'active': subcategory !== null}"><a href="/articles/{{category | lowercase}}/{{subcategory | lowercase}}">{{subcategory | titlecase}}</a></li>
+    </ol>
+
+    <div *ngIf="displayFlag == 1">
+      <ul class="article-list" *ngIf="articeByCategory != ''" [innerHTML]="articeByCategory"></ul>
+      <div class="loadmore">
+        <a *ngIf="articeByCategory != ''" class="btn btn-theme" id="get-more" (click)="getMore()">{{more}}</a>
+      </div>
+      <div *ngIf="articeByCategory == ''">
+        <div class="left_content">
+          <div class="error_page">
+            <h3>We Are Sorry</h3>
+            <h2>No Content Available :(</h2>
+            <p>We are adding new contents. Please check after some time.</p>
+            <span></span> <a href="/" class="wow fadeInLeftBig">Go to home page</a> </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="displayFlag == 2">
+      <ul class="article-list" *ngIf="articeBySubCategory != ''" [innerHTML]="articeBySubCategory"></ul>
+      <div class="loadmore">
+          <a *ngIf="articeBySubCategory != ''" class="btn btn-theme" id="get-more" (click)="getMore()">{{more}}</a>
+        </div>
+      <div *ngIf="articeBySubCategory == ''">
+        <div class="left_content">
+          <div class="error_page">
+            <h3>We Are Sorry</h3>
+            <h2>No Content Available :(</h2>
+            <p>We are adding new contents. Please check after some time.</p>
+            <span></span> <a href="/" class="wow fadeInLeftBig">Go to home page</a> </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="displayFlag == 3">
+      <h1>{{article.subject}}</h1>
+      <div class="post_commentbox"> 
+        <span><i class="fa fa-user"></i>{{article.author.user_fname}} {{article.author.user_lname}}</span> 
+        <span><i class="fa fa-calendar"></i>{{article.created | amFromUtc | amTimeAgo}}</span> 
+        <span *ngIf="article.country != ''"><i class="fa fa-map-marker"></i>{{article.city}} {{article.state.split("-")[1]}} {{article.country}}</span> 
+      </div>
+      <div class="single_page_content"> 
+        <div>
+          <blockquote>{{article.overview}}</blockquote>
+          <img *ngIf="article.images.banner != ''"class="img-center banner-image" src="{{article.images.banner}}" alt="">
+        </div>
+        <p [innerHTML]="article.body"></p>
+      </div>
+      <div class="social_link">
+        <ul class="sociallink_nav">
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u={{url}}"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="https://twitter.com/home?status={{url}}"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://plus.google.com/share?url={{url}}"><i class="fa fa-google-plus"></i></a></li>
+          <li><a href="https://www.linkedin.com/shareArticle?url={{url}}&title={{article.subject}}"><i class="fa fa-linkedin"></i></a></li>
+          <li><a href="https://pinterest.com/pin/create/button/?url={{url}}&media={{article.overview}}"><i class="fa fa-pinterest"></i></a></li>
+        </ul>
+      </div>
+  </div>
+  <div id="comments">
+    <fb-comments href="{{url}}" data-numposts="5" width="500"></fb-comments>
+  </div>
+  <div *ngIf="article != null" class="related_post">
+    <h2>Related Post <i class="fa fa-thumbs-o-up"></i></h2>
+    <ul class="spost_nav wow fadeInDown animated">
+      <li>
+        <div class="media"> <a class="media-left" href="/page"> <img src="/assets/images/post_img1.jpg" alt=""> </a>
+          <div class="media-body"> <a class="catg_title" href="/page"> Aliquam malesuada diam eget turpis varius</a> </div>
+        </div>
+      </li>
+      <li>
+        <div class="media"> <a class="media-left" href="/page"> <img src="/assets/images/post_img2.jpg" alt=""> </a>
+          <div class="media-body"> <a class="catg_title" href="/page"> Aliquam malesuada diam eget turpis varius</a> </div>
+        </div>
+      </li>
+      <li>
+        <div class="media"> <a class="media-left" href="/page"> <img src="/assets/images/post_img1.jpg" alt=""> </a>
+          <div class="media-body"> <a class="catg_title" href="/page"> Aliquam malesuada diam eget turpis varius</a> </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+

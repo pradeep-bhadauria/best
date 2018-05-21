@@ -1,0 +1,88 @@
+<div _ngcontent-c1="" class="single_post_content">
+    <h2 _ngcontent-c1="">
+        <span _ngcontent-c1="">Register</span>
+    </h2>
+    <div class="main-login main-center">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="fname" class="cols-sm-2 control-label">First Name</label><span class="error">{{fname_err}}</span>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user fa" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" name="fname" id="fname" [(ngModel)]="fname" placeholder="First Name" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="lname" class="cols-sm-2 control-label">Last Name</label><span class="error">{{lname_err}}</span>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user fa" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" name="lname" id="lname" [(ngModel)]="lname" placeholder="Last Name" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="cols-sm-2 control-label">Email</label><span class="error">{{email_err}}</span>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-envelope fa" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" name="email" id="email" [(ngModel)]="email" placeholder="Enter your Email" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dob" class="cols-sm-2 control-label">DOB</label><span class="error">{{dob_err}}</span>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar fa" aria-hidden="true"></i>
+                        </span>
+                        <ng-datepicker name="dob" id="dob" [options]="datePickerOptions" [(ngModel)]="dob"></ng-datepicker>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="form-group">
+                <label for="password" class="cols-sm-2 control-label">Password</label><span class="error">{{password_err}}</span>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                        </span>
+                        <input type="password" class="form-control" name="password" id="password" [(ngModel)]="password" placeholder="Enter your Password" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label><span class="error">{{confirm_err}}</span>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                        </span>
+                        <input type="password" class="form-control" name="confirm" id="confirm" [(ngModel)]="confirm" placeholder="Confirm your Password" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <button (click)="registerUser()" id="register" type="button" class="btn btn-theme btn-block login-button">Register</button>
+            </div>
+            <div class="login-register">
+                <a href="/login">Login</a> 
+                | <a href="/forgot-password">Forgot Password</a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+.banner-image{
+    width: 100%;
+    border: 1px solid #efefef;
+    padding: 5px;
+}
+
+img{max-width: 100% !important;}
+iframe{max-width: 400px !important;}
+
+.article-list li {
+    margin-bottom: 20px;
+}
+.loadmore{
+    text-align: center;
+}

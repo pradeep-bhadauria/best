@@ -1,0 +1,38 @@
+.glyphicon {
+    cursor: pointer !important;
+}
+.row {
+    margin: 10px 0px !important;
+}
+#page-len {
+    width: 80px;
+    margin: 0px 10px;
+    display: inline;
+}
+
+.tab-pager {
+    border-radius: 50%; 
+}
+hr {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+div {
+    padding: 0px !important;
+}
+
+td{
+    font-size: 12px;
+}
+
+.hidden{display: none;}
+.visible{display: inline;}
+.glyphicon{font-size: 16px;}
+.cancel, .delete {color:#900604;}
+.editing{background: #deeaff !important;}
+.editable{border:1px solid #deeaff; background: #fff;}
+.disabled{
+    background: #efefef;
+    color: black;
+    border: 1px solid #dbdbdb;
+}

@@ -1,0 +1,153 @@
+<ul class="nav nav-tabs">
+  <li [ngClass]="{'active': active === 'myarticles'}"><a data-toggle="tab" href="#myarticles"><span class="glyphicon glyphicon-edit"></span> My Articles</a></li>
+  <li [ngClass]="{'active': active === 'settings'}"><a data-toggle="tab" href="#settings"><span class="glyphicon glyphicon-cog"></span> Profile Setting</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="myarticles" [ngClass]="{ 'tab-pane fade in': user, 'active': active === 'myarticles'}">
+    <div class="p-2">
+      <div *ngFor="let item of myArticles" id="article_{{item.id}}" class="col-sm-12 contpost">
+        <div class="row">
+          <div class="col PostTitle">
+            <h5><a href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}">{{item.subject}}</a></h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 col-xs-4">
+            <img class="thumbnail center" src="{{item.images.thumbnail}}" alt="No Image"/>
+          </div>
+          <div class="col-sm-9 col-xs-8">      
+            <p>{{item.overview}}</p>
+            <p><span class="badge badge-info">{{item.category.name}}</span> <span class="glyphicon glyphicon-chevron-right"></span> <span class="badge badge-info">{{item.sub_category.name}}</span></p>
+            <p>
+              <span class="PostDate"><i class="fa fa-calendar"></i> Last Updated : {{item.updated | amFromUtc |amTimeAgo}}</span>&nbsp;
+              <a href="/editor/{{item.id}}"><span class="glyphicon glyphicon-edit"></span></a>&nbsp;
+              <a (click)="deleteArticle(item.id)"><span class="glyphicon glyphicon-trash delete"></span></a>
+            </p>
+          </div>
+        </div>
+        <div class="row hidden-sm hidden-xs">
+          <div class="col small p-2">
+            <p>
+              <span><i class="fa fa-user"></i> {{item.author.user_fname}}</span> 
+              | <span><i class="fa fa-comment"></i> {{item.stats.comments}} Comments</span>
+              | <span><i class="fa fa-thumbs-up"></i> {{item.stats.shares}} Likes</span>
+              | <span><i class="fa fa-eye"></i> {{item.stats.views}} Views</span>
+              | <span><i class="fa fa-share"></i> {{item.stats.shares}} Shares</span>
+              <br><br>
+              <i class="fa fa-tags"></i> Tags : 
+              <span *ngFor="let i of item.keywords"><span class="badge badge-info">{{i.keyword}}</span>&nbsp;</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="settings" [ngClass]="{ 'tab-pane fade in': user, 'active': active === 'settings'}">
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><span class="glyphicon glyphicon-edit"></span> Name</a>
+          </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <form class="form-horizontal">
+              <div class="form-group">
+                  <label for="fname" class="cols-sm-2 control-label">First Name</label><span class="error">{{fname_err}}</span>
+                  <div class="cols-sm-10">
+                      <div class="input-group">
+                          <span class="input-group-addon">
+                              <i class="fa fa-user fa" aria-hidden="true"></i>
+                          </span>
+                          <input type="text" class="form-control" name="fname" id="fname" [(ngModel)]="fname" placeholder="First Name" />
+                      </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="lname" class="cols-sm-2 control-label">Last Name</label><span class="error">{{lname_err}}</span>
+                  <div class="cols-sm-10">
+                      <div class="input-group">
+                          <span class="input-group-addon">
+                              <i class="fa fa-user fa" aria-hidden="true"></i>
+                          </span>
+                          <input type="text" class="form-control" name="lname" id="lname" [(ngModel)]="lname" placeholder="Last Name" />
+                      </div>
+                  </div>
+              </div>
+              <div class="form-group ">
+                <button (click)="changeName()" type="button" class="btn btn-theme btn-block login-button">Change Name</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><span class="glyphicon glyphicon-edit"></span> Email</a>
+          </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse">
+          <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="email" class="cols-sm-2 control-label">Email</label><span class="error">{{email_err}}</span>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-envelope fa" aria-hidden="true"></i>
+                            </span>
+                            <input type="text" class="form-control" name="email" id="email" [(ngModel)]="email" placeholder="Enter your Email" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group ">
+                  <button (click)="changeEmail()" type="button" class="btn btn-theme btn-block login-button">Change Email</button>
+                </div>
+              </form>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3"><span class="glyphicon glyphicon-edit"></span> Password</a>
+          </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse">
+          <div class="panel-body">
+              <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="password" class="cols-sm-2 control-label">Password</label><span class="error">{{password_err}}</span>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                            </span>
+                            <input type="password" class="form-control" name="password" id="password" [(ngModel)]="password" placeholder="Enter your Password" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label><span class="error">{{confirm_err}}</span>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                            </span>
+                            <input type="password" class="form-control" name="confirm" id="confirm" [(ngModel)]="confirm" placeholder="Confirm your Password" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group ">
+                  <button (click)="changePassword()" type="button" class="btn btn-theme btn-block login-button">Change Password</button>
+                </div>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+</div>

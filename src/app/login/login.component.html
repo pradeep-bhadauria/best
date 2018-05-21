@@ -1,0 +1,40 @@
+<div _ngcontent-c1="" class="single_post_content">
+    <h2 _ngcontent-c1="">
+        <span _ngcontent-c1="">Login</span>
+    </h2>
+    <div class="main-login main-center">
+        <form class="form-horizontal" method="post" action="#">
+            <div class="form-group">
+                <label for="email" class="cols-sm-2 control-label">Email</label><span class="error">{{email_err}}</span>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-envelope fa" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" name="email" [(ngModel)]="email" placeholder="Enter your Email" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="cols-sm-2 control-label">Password</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                        </span>
+                        <input type="password" class="form-control" name="password" [(ngModel)]="password" placeholder="Enter your Password" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <button type="button" id="login" (click)="login()" class="btn btn-theme btn-block login-button">Login</button>
+            </div>
+            <div class="login-register">
+                <a href="/register">Register</a> 
+                | <a href="/forgot-password">Forgot Password</a>
+            </div>
+        </form>
+    </div>
+</div>

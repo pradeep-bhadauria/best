@@ -1,0 +1,32 @@
+.nav.nav-tabs {
+    background: transparent;
+    border-bottom: 1px solid #8f8f8f !important;
+}
+.nav-tabs>li {
+    float: left;
+}
+.nav-tabs > li > a {
+    color : #8f8f8f;
+}
+
+.nav-tabs > li.active > a {
+    color : #fff;
+}
+
+#myarticles{
+    padding: 5px;
+}
+p{font-size: 12px;}
+.contpost{
+    background: #efefef;
+    padding: 0px 25px;
+    margin: 0px 0px 10px 0px;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.panel-body{
+    padding: 10px 50px;
+}

@@ -1,0 +1,21 @@
+#searchbox-main {
+    width: 130px !important;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px !important;
+    background-color: white;
+    float: right;
+    /*background-image: url('searchicon.png');*/
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    margin: 9px 0px;
+    height: 40px;
+    font-size: 16px !important;
+}
+
+#searchbox-main:focus {
+    width: 100% !important;
+}

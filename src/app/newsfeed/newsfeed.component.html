@@ -1,0 +1,226 @@
+<!--slider section-->
+<input id="slidershow" type="text" class="hide" value="{{sliderShow}}"/>
+<div id="slider">
+    <div *ngIf="slider!=null"  class="slick_slider" style="display:none;">
+        <div *ngFor="let item of slider" class="single_iteam"> <a href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}"> <img src="{{item.images.banner}}" alt=""></a>
+            <div class="slider_article">
+                <h2><a class="slider_tittle" href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}">{{item.subject}}</a></h2>
+                <p>{{item.overview}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Single Post Content section-->
+<div class="single_post_content">
+    <h2><span>News</span></h2>
+    <div class="single_post_content_left">
+        <ul *ngIf="newsFirst!=null" class="business_catgnav  wow fadeInDown">
+            <li>
+                <figure class="bsbig_fig">
+                    <a href="/articles/{{newsFirst.category.name | lowercase}}/{{newsFirst.sub_category.name | lowercase}}/{{newsFirst.uid}}" class="featured_img"> <img alt="" src="{{newsFirst.images.banner}}"> <span class="overlay"></span> </a>
+                <figcaption> <a href="/articles/{{newsFirst.category.name | lowercase}}/{{newsFirst.sub_category.name | lowercase}}/{{newsFirst.uid}}">{{newsFirst.subject}}</a> </figcaption>
+                <p>{{newsFirst.overview}}</p>
+                </figure>
+            </li>
+        </ul>
+    </div>
+    <div class="single_post_content_right">
+        <ul  *ngIf="newsRest!=null" class="spost_nav">
+            <li *ngFor="let item of newsRest">
+                <div class="media wow fadeInDown">
+                    <a href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}" class="media-left"> 
+                        <img alt="" src="{{item.images.thumbnail}}">
+                    </a>
+                <div class="media-body">
+                    <a href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}" class="catg_title">
+                        {{item.subject}}
+                    </a>
+                </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="fashion_technology_area">
+    <div class="fashion">
+        <div class="single_post_content">
+        <h2><span>Life & Style</span></h2>
+        <ul *ngIf="lifestyleFirst!=null" class="business_catgnav  wow fadeInDown">
+            <li>
+                <figure class="bsbig_fig">
+                    <a href="/articles/{{lifestyleFirst.category.name | lowercase}}/{{lifestyleFirst.sub_category.name | lowercase}}/{{lifestyleFirst.uid}}" class="featured_img"> <img alt="" src="{{lifestyleFirst.images.banner}}"> <span class="overlay"></span> </a>
+                <figcaption> <a href="/articles/{{lifestyleFirst.category.name | lowercase}}/{{lifestyleFirst.sub_category.name | lowercase}}/{{lifestyleFirst.uid}}">{{lifestyleFirst.subject}}</a> </figcaption>
+                <p>{{lifestyleFirst.overview}}</p>
+                </figure>
+            </li>
+        </ul>
+        <ul *ngIf="lifestyleRest!=null" class="spost_nav">
+            <li *ngFor="let item of lifestyleRest">
+                <div class="media wow fadeInDown">
+                    <a href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}" class="media-left"> 
+                        <img alt="" src="{{item.images.thumbnail}}">
+                    </a>
+                <div class="media-body">
+                    <a href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}" class="catg_title">
+                        {{item.subject}}
+                    </a>
+                </div>
+                </div>
+            </li>
+        </ul>
+        </div>
+    </div>
+    <div class="technology">
+        <div class="single_post_content">
+        <h2><span>Technology</span></h2>
+        <ul *ngIf="technologyFirst!=null" class="business_catgnav  wow fadeInDown">
+            <li>
+                <figure class="bsbig_fig">
+                    <a href="/articles/{{technologyFirst.category.name | lowercase}}/{{technologyFirst.sub_category.name | lowercase}}/{{technologyFirst.uid}}" class="featured_img"> <img alt="" src="{{technologyFirst.images.banner}}"> <span class="overlay"></span> </a>
+                <figcaption> <a href="/articles/{{technologyFirst.category.name | lowercase}}/{{technologyFirst.sub_category.name | lowercase}}/{{technologyFirst.uid}}">{{technologyFirst.subject}}</a> </figcaption>
+                <p>{{technologyFirst.overview}}</p>
+                </figure>
+            </li>
+        </ul>
+        <ul *ngIf="technologyRest!=null" class="spost_nav">
+            <li *ngFor="let item of technologyRest">
+                <div class="media wow fadeInDown">
+                    <a href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}" class="media-left"> 
+                        <img alt="" src="{{item.images.thumbnail}}">
+                    </a>
+                <div class="media-body">
+                    <a href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}" class="catg_title">
+                        {{item.subject}}
+                    </a>
+                </div>
+                </div>
+            </li>
+        </ul>
+        </div>
+    </div>
+</div>
+
+<div class="single_post_content">
+    <h2><span>Entertainment</span></h2>
+    <div class="single_post_content_left">
+        <ul *ngIf="entertainmentFirst!=null" class="business_catgnav  wow fadeInDown">
+            <li>
+                <figure class="bsbig_fig">
+                    <a href="/articles/{{entertainmentFirst.category.name | lowercase}}/{{entertainmentFirst.sub_category.name | lowercase}}/{{entertainmentFirst.uid}}" class="featured_img"> <img alt="" src="{{entertainmentFirst.images.banner}}"> <span class="overlay"></span> </a>
+                <figcaption> <a href="/articles/{{entertainmentFirst.category.name | lowercase}}/{{entertainmentFirst.sub_category.name | lowercase}}/{{entertainmentFirst.uid}}">{{entertainmentFirst.subject}}</a> </figcaption>
+                <p>{{entertainmentFirst.overview}}</p>
+                </figure>
+            </li>
+        </ul>
+    </div>
+    <div class="single_post_content_right">
+        <ul  *ngIf="entertainmentRest!=null" class="spost_nav">
+            <li *ngFor="let item of entertainmentRest">
+                <div class="media wow fadeInDown">
+                    <a href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}" class="media-left"> 
+                        <img alt="" src="{{item.images.thumbnail}}">
+                    </a>
+                <div class="media-body">
+                    <a href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}" class="catg_title">
+                        {{item.subject}}
+                    </a>
+                </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="fashion_technology_area">
+    <div class="fashion">
+        <div class="single_post_content">
+        <h2><span>Sports</span></h2>
+        <ul *ngIf="sportsFirst!=null" class="business_catgnav  wow fadeInDown">
+            <li>
+                <figure class="bsbig_fig">
+                    <a href="/articles/{{sportsFirst.category.name | lowercase}}/{{sportsFirst.sub_category.name | lowercase}}/{{sportsFirst.uid}}" class="featured_img"> <img alt="" src="{{sportsFirst.images.banner}}"> <span class="overlay"></span> </a>
+                <figcaption> <a href="/articles/{{sportsFirst.category.name | lowercase}}/{{sportsFirst.sub_category.name | lowercase}}/{{sportsFirst.uid}}">{{sportsFirst.subject}}</a> </figcaption>
+                <p>{{sportsFirst.overview}}</p>
+                </figure>
+            </li>
+        </ul>
+        <ul *ngIf="sportsRest!=null" class="spost_nav">
+            <li *ngFor="let item of sportsRest">
+                <div class="media wow fadeInDown">
+                    <a href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}" class="media-left"> 
+                        <img alt="" src="{{item.images.thumbnail}}">
+                    </a>
+                <div class="media-body">
+                    <a href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}" class="catg_title">
+                        {{item.subject}}
+                    </a>
+                </div>
+                </div>
+            </li>
+        </ul>
+        </div>
+    </div>
+    <div class="technology">
+        <div class="single_post_content">
+        <h2><span>Business</span></h2>
+        <ul *ngIf="businessFirst!=null" class="business_catgnav  wow fadeInDown">
+            <li>
+                <figure class="bsbig_fig">
+                    <a href="/articles/{{businessFirst.category.name | lowercase}}/{{businessFirst.sub_category.name | lowercase}}/{{businessFirst.uid}}" class="featured_img"> <img alt="" src="{{businessFirst.images.banner}}"> <span class="overlay"></span> </a>
+                <figcaption> <a href="/articles/{{businessFirst.category.name | lowercase}}/{{businessFirst.sub_category.name | lowercase}}/{{businessFirst.uid}}">{{businessFirst.subject}}</a> </figcaption>
+                <p>{{businessFirst.overview}}</p>
+                </figure>
+            </li>
+        </ul>
+        <ul *ngIf="businessRest!=null" class="spost_nav">
+            <li *ngFor="let item of businessRest">
+                <div class="media wow fadeInDown">
+                    <a href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}" class="media-left"> 
+                        <img alt="" src="{{item.images.thumbnail}}">
+                    </a>
+                <div class="media-body">
+                    <a href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}" class="catg_title">
+                        {{item.subject}}
+                    </a>
+                </div>
+                </div>
+            </li>
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="single_post_content">
+    <h2><span>Humour</span></h2>
+    <div class="single_post_content_left">
+        <ul *ngIf="humourFirst!=null" class="business_catgnav  wow fadeInDown">
+            <li>
+                <figure class="bsbig_fig">
+                    <a href="/articles/{{humourFirst.category.name | lowercase}}/{{humourFirst.sub_category.name | lowercase}}/{{humourFirst.uid}}" class="featured_img"> <img alt="" src="{{humourFirst.images.banner}}"> <span class="overlay"></span> </a>
+                <figcaption> <a href="/articles/{{humourFirst.category.name | lowercase}}/{{humourFirst.sub_category.name | lowercase}}/{{humourFirst.uid}}">{{humourFirst.subject}}</a> </figcaption>
+                <p>{{humourFirst.overview}}</p>
+                </figure>
+            </li>
+        </ul>
+    </div>
+    <div class="single_post_content_right">
+        <ul  *ngIf="humourRest!=null" class="spost_nav">
+            <li *ngFor="let item of humourRest">
+                <div class="media wow fadeInDown">
+                    <a href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}" class="media-left"> 
+                        <img alt="" src="{{item.images.thumbnail}}">
+                    </a>
+                <div class="media-body">
+                    <a href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}" class="catg_title">
+                        {{item.subject}}
+                    </a>
+                </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

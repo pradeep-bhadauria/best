@@ -1,0 +1,25 @@
+#regional-check label input{
+width: 12px !important;
+position: relative;
+top: 2px;
+}
+.img-display{
+    height: 70px;
+    width: 90px;
+    background: #fff;
+    position: absolute;
+    z-index: 1;
+    top: 5px;
+    right: 15px;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+}
+.img-display span{
+    margin: 20px 28px;
+    font-size: 30px;
+    color: #838383;
+}
+.img-display img{
+    width: 90px;
+    height: 70px;
+}

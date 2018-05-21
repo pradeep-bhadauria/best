@@ -1,0 +1,95 @@
+<div class="single_post_content">
+  <h2>
+    <span>Editor</span>
+  </h2>
+  <div>
+        <div class="form-group col-md-12">
+            <label>Subject*</label><span class="error">{{subject_err}}</span>
+            <input class="form-control" type="text" [(ngModel)]="subject" placeholder="Subject*"/>
+        </div>
+        <div class="form-group col-md-12">
+            <label>Overview*</label><span class="error">{{overview_err}}</span>
+            <textarea class="form-control" type="text" [(ngModel)]="overview" placeholder="Overview*"></textarea>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Category*</label>
+            <select class="form-control" #category (change)="categoryChanged(category.value)"
+            [(ngModel)]="selectedCategory">
+              <option *ngFor="let item of categoryList" value="{{item.id}}">{{item.name}}</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Sub Category*</label>
+            <select class="form-control" #subcategory 
+            [(ngModel)]="selectedSubCategory">
+              <option *ngFor="let item of subCategoryList" value="{{item.id}}">{{item.name}}</option>
+            </select>
+        </div>
+        <form>
+            <div class="form-group col-md-6">
+                <label>Image*</label><span class="error">{{banner_err}}</span>
+                <input type="file" (change)="fileChange($event)" placeholder="Upload file" style="border: 0px!important;" accept="image/jpeg, image/png"/>
+                <div class="img-display">
+                    <img *ngIf="displayImage!=null" src="{{displayImage}}"/>
+                    <span *ngIf="displayImage==null" class="glyphicon glyphicon-camera"></span>
+                </div>
+            </div>
+        </form>
+        <div class="form-group col-md-6">
+            <label>Keywords*</label><span class="error">{{keywords_err}}</span>
+            <input class="form-control" type="text" [(ngModel)]="keyword" placeholder="keyword1 keyword2"/>
+        </div>
+        <div class="form-group col-md-12">
+            <label>Body*</label><span class="error">{{body_err}}</span>
+            <editor apiKey="tzo4ehyxvkzab513z0pffcqus92yhryrmqsrs2ykgdc4qlm0" cloudChannel="dev" [init]="{
+                selector: 'textarea',
+                height:300,
+                theme: 'modern',
+                plugins: 'print preview fullscreen image link media table hr help insertdatetime advlist
+                lists textcolor colorpicker hr pagebreak nonbreaking anchor toc codesample',
+                toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
+                textcolor_rows: '4',
+                image_advtab: true
+              }" [(ngModel)]="body">
+              </editor>
+        </div>
+        <div id="regional-check" class="form-group col-md-12">
+            <label><input type="checkbox" (change)="regionalCheck()" [(ngModel)]="regionalFlag"/> Is this article specific to country or a state</label>
+        </div>
+        <div *ngIf="regionalFlag" class="form-group col-md-4">
+            <label>Country</label>
+            <select class="form-control" (change)="countryChanged(1)" [(ngModel)]="country">
+                <option value="">--Select Country--</option>
+                <option *ngFor="let item of countriesList" value="{{item.full_name}}">{{item.full_name}}</option>
+            </select>
+        </div>
+        <div *ngIf="regionalFlag" class="form-group col-md-4">
+            <label>State</label>
+            <select disabled=disabled class="form-control" id="state" (change)="stateChanged(1)"  [(ngModel)]="state">
+                <option value="">--Select State--</option>
+                <option *ngFor="let item of statesList" value="{{item.state_id +'-'+ item.state_name}}">{{item.state_name}}</option>
+            </select>
+        </div>
+        <div *ngIf="regionalFlag" class="form-group col-md-4">
+            <label>City</label>
+            <select disabled=disabled class="form-control" id="city"  [(ngModel)]="city">
+                    <option value="">--Select City--</option>
+                <option *ngFor="let item of citiesList" value="{{item}}">{{item}}</option>
+            </select>
+        </div>
+        <hr>
+        <div class="form-group col-md-12 buttons">
+            <ul class="list-inline  pull-right">
+                <li><a (click)="saveBlog()" id="save" class="btn default-btn btn-sm"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a></li>
+                <li><a (click)="cancel()" class="btn btn-red btn-sm"><span class="glyphicon glyphicon-floppy-remove"></span> Cancel</a></li>
+                <li  *ngIf="article_id!=null"><a (click)="callPreview()" class="btn btn-theme btn-sm"><span class="glyphicon glyphicon-eye-open"></span> Preview</a></li>
+                <li *ngIf="article_id!=null">
+                    <a (click)="publish()" class="btn btn-theme btn-sm">
+                        <span *ngIf="is_published==0"><span class="glyphicon glyphicon-ok"></span> Publish</span>
+                        <span *ngIf="is_published==1"><span class="glyphicon glyphicon-remove"></span> Unpublish</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+  </div>
+</div>

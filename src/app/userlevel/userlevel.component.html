@@ -1,0 +1,88 @@
+<div _ngcontent-c1="" class="single_post_content">
+    <h2 _ngcontent-c1=""><span _ngcontent-c1="">User Level</span></h2>
+    <div class="row">
+        <div class="col-md-8">
+            <label>Show </label>
+            <select id="page-len" size="1" class="form-control" (change)="pageLimitChanged($event.target.value)">
+                <option *ngFor="let item of pageOptions" value="{{item}}">{{item}}</option>
+            </select>
+            <label> Rows</label>
+        </div>
+        <div class="col-md-4">
+            <div class="input-group">
+                <input #ulSearch class="form-control" ng-model="searchText" placeholder="Search" type="search" />
+                <span (click)="search(ulSearch.value)" class="input-group-addon">
+                    <span class="glyphicon glyphicon-search"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <a (click)="offsetChanged(-1)" id="prev" class="btn btn-theme btn-sm disabled">&lt;</a>
+            <a (click)="offsetChanged(1)" id="next" class="btn btn-theme btn-sm">&gt;</a>
+            <span style="
+        margin: 8px;
+        font-size: 12px;">You are viewing {{offset}} - {{add(offset,pageLimit)}} rows of {{rowCount}} rows</span>
+            <a (click)="addUserLevelMain()" class="btn btn-theme btn-sm pull-right">
+                <span class="glyphicon glyphicon-plus"></span> Add New User Level
+            </a>
+        </div>
+    </div>
+    <hr />
+    <div *ngIf="addUserLevelContainer" class="row">
+        <div class="add-user-level">
+            <form>
+                <div class="form-group">
+                    <label for="userLevelName">User Level</label>
+                    <input type="text" class="form-control" #userLevelName placeholder="Enter level here">
+                </div>
+                <div class="form-group">
+                    <label for="userLevelDesc">Description</label>
+                    <textarea class="form-control" #userLevelDesc placeholder="Description"></textarea>
+                </div>
+                <a (click)="addUserLevel(userLevelName,userLevelDesc)" class="btn btn-theme"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
+                <a (click)="addUserLevelMain()" class="btn btn-grey"><span class="glyphicon glyphicon-remove"></span> Cancel</a>
+            </form>
+        </div>
+        <hr />
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped">
+                <!--table cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered"-->
+                <!--table cellpadding="0" cellspacing="0" border="0" class="table  table-hover data-table myTable"-->
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Updated</th>
+                        <th>Created</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of arrUserLevel">
+                        <td class="center">
+                            {{item.name}}
+                        </td>
+                        <td>
+                            {{item.desc}}
+                        </td>
+                        <td class="center">{{item.updated}}</td>
+                        <td class="center">{{item.created}}</td>
+                        <td id="{{item.id}}" class="center">
+                            <span (click)="edit($event)" class="edit visible glyphicon glyphicon-edit"></span>
+                            <span (click)="delete(item.id, item.name)" class="delete visible glyphicon glyphicon-trash"></span>
+                            <span (click)="save(item.id,$event)" class="save hidden glyphicon glyphicon-floppy-disk"></span>
+                            <span (click)="cancelEdit($event)" class="cancel hidden glyphicon glyphicon-remove"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
