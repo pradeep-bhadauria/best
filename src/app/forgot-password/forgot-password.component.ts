@@ -21,7 +21,7 @@ export class ForgotPasswordComponent implements OnInit {
   confirm_err="";
   user_id = null;
   ngOnInit() {
-    this.meta.updateTag({"robots":"noindex, nofollow"});
+    this.meta.addTag({"robots":"noindex, nofollow"});
     this.title.setTitle("Behind Stories - Forgot Password");
 
     this.activatedRoute.queryParams.subscribe((params: Params) => {

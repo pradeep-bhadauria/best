@@ -13,7 +13,7 @@ export class NotfoundComponent implements OnInit {
     private title: Title) { }
 
   ngOnInit() {
-    this.meta.updateTag({"robots":"noindex, nofollow"});
+    this.meta.addTag({"robots":"noindex, nofollow"});
     this.title.setTitle("Behind Stories - 404");
   }
 

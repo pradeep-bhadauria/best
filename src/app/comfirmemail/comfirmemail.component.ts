@@ -20,7 +20,7 @@ export class ComfirmemailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.meta.updateTag({"robots":"noindex, nofollow"});
+    this.meta.addTag({"robots":"noindex, nofollow"});
     this.title.setTitle("Behind Stories - Confirm Email");
 
     this.activatedRoute.queryParams.subscribe((params: Params) => {

@@ -155,8 +155,8 @@ export class PageComponent implements OnInit {
             this.article.keywords.forEach(element => {
               keyword = keyword + " " + element.keyword;
             });
-            this.meta.updateTag({name:"description",content:this.article.overview});
-            this.meta.updateTag({name: "keywords", content:keyword.trim()});
+            this.meta.addTag({name:"description",content:this.article.overview});
+            this.meta.addTag({name: "keywords", content:keyword.trim()});
             this.displayFlag=3;
           }
         } else {

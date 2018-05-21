@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriesService, PageService } from './../services';
 import { Constants, AlertService } from './../utils/index';
+import {DomSanitizer, Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-newsfeed',
@@ -38,9 +39,19 @@ export class NewsfeedComponent implements OnInit {
   constructor(
     public categoriesService: CategoriesService,
     public pageService: PageService,
-    public alertService: AlertService
-  ) { }
+    public alertService: AlertService, 
+    public meta: Meta,
+    public title: Title
+  ) { 
+  }
+
   ngOnInit() {
+
+    this.meta.addTag({"robots":"index, follow"});
+    this.meta.addTag({"description":"Latest news, sport, technologies, life and style, business, entertainment and a whole lot more. The Behind Stories informs, educates and entertains - wherever you are, whatever your age."});
+    this.meta.addTag({"keywords":"World News Technology Life & Style Business Entertainment Sports and Humour World"});
+    this.title.setTitle("Behind Stories - Home");
+
     this.categoriesService.getAll(0, 10).subscribe(
       data => {
         var categories = JSON.parse(data.data);

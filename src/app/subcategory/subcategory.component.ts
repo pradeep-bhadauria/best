@@ -11,7 +11,7 @@ import {DomSanitizer, Meta, Title} from '@angular/platform-browser';
 })
 export class SubcategoryComponent implements OnInit {
   ngOnInit() {
-    this.meta.updateTag({"robots":"noindex, nofollow"});
+    this.meta.addTag({"robots":"noindex, nofollow"});
     this.title.setTitle("Behind Stories - Sub Category");
   }
   accessAllowed=false;

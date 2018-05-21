@@ -12,7 +12,7 @@ import {DomSanitizer, Meta, Title} from '@angular/platform-browser';
 })
 export class CategoryComponent implements OnInit {
   ngOnInit() {
-    this.meta.updateTag({"robots":"noindex, nofollow"});
+    this.meta.addTag({"robots":"noindex, nofollow"});
     this.title.setTitle("Behind Stories - Categories");
 
   }

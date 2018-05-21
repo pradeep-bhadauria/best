@@ -39,7 +39,7 @@
             <label>Keywords*</label><span class="error">{{keywords_err}}</span>
             <input class="form-control" type="text" [(ngModel)]="keyword" placeholder="keyword1 keyword2"/>
         </div>
-        <div class="form-group col-md-12">
+        <div *ngIf="isBrowser" class="form-group col-md-12">
             <label>Body*</label><span class="error">{{body_err}}</span>
             <editor apiKey="tzo4ehyxvkzab513z0pffcqus92yhryrmqsrs2ykgdc4qlm0" cloudChannel="dev" [init]="{
                 selector: 'textarea',

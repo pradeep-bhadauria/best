@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , PLATFORM_ID, Inject } from '@angular/core';
 import { CMSService, CategoriesService, SubCategoriesService, } from './../services/index';
 import { Constants, AlertService } from './../utils/index';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-cms',
@@ -10,7 +11,8 @@ import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
   styleUrls: ['./cms.component.css']
 })
 export class CmsComponent implements OnInit {
-
+  currentUser = null;
+  isBrowser = false;
   countriesList = null;
   statesList = null;
   citiesList = null;
@@ -61,10 +63,17 @@ export class CmsComponent implements OnInit {
     private categoriesService: CategoriesService,
     private subCategoriesService: SubCategoriesService,
     private title: Title,
-    private meta: Meta) {
+    private meta: Meta,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+    if (this.isBrowser) {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    }
   }
+
   ngOnInit() {
-    this.meta.updateTag({ "robots": "noindex, nofollow" });
+    this.meta.addTag({ "robots": "noindex, nofollow" });
     this.title.setTitle("Behind Stories - Editor");
 
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -272,8 +281,8 @@ export class CmsComponent implements OnInit {
     if (this.image == null && this.imageUrl.banner == "") {
       isValid = false;
       this.banner_err = "Display image is required!";
-    } 
-    if (this.image != null){
+    }
+    if (this.image != null) {
       if (this.image.get("file")["size"] > 2000001) {
         isValid = false;
         this.banner_err = "Max size supported is 2mb.";
