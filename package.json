@@ -2,13 +2,9 @@
   "name": "behind-stories",
   "version": "0.0.0",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/angular/universal-starter.git"
-  },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "concurrently --kill-others \"npm run serve:ssr\"",
     "build": "npm run build:ssr",
     "lint": "ng lint",
     "build:client-and-server-bundles": "ng build --prod && ng run behind-stories:server:production",
@@ -17,7 +13,13 @@
     "generate:prerender": "cd dist && node prerender",
     "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
     "serve:prerender": "cd dist/browser && http-server",
-    "serve:ssr": "node dist/server"
+    "serve:ssr": "node dist/server",
+    "postinstall": "npm run build"
+  },
+  "author": "Pradeep Bhadauria",
+  "engines": {
+    "node": "8.11.1",
+    "npm": "5.6.0"
   },
   "pre-commit": [],
   "private": true,
