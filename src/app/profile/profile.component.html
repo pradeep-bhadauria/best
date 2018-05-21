@@ -6,6 +6,9 @@
 <div class="tab-content">
   <div id="myarticles" [ngClass]="{ 'tab-pane fade in': user, 'active': active === 'myarticles'}">
     <div class="p-2">
+      <span class="pull-right">Number of Articles : {{articleCount}}</span>
+    </div>
+    <div class="p-2">
       <div *ngFor="let item of myArticles" id="article_{{item.id}}" class="col-sm-12 contpost">
         <div class="row">
           <div class="col PostTitle">
@@ -41,6 +44,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="loadmore">
+      <a *ngIf="articleCount != 0" class="btn btn-theme" id="get-more" (click)="getMore()">{{more}}</a>
     </div>
   </div>
   <div id="settings" [ngClass]="{ 'tab-pane fade in': user, 'active': active === 'settings'}">

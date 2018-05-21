@@ -1,8 +1,8 @@
 <div class="single_post_content">
     <ol class="breadcrumb">
       <li><a href="/">Home</a></li>
-      <li *ngIf="category != null" [ngClass]="{'active': subcategory === null}"><a href="/articles/{{category | lowercase}}">{{category | titlecase}}</a></li>
-      <li *ngIf="subcategory != null" [ngClass]="{'active': subcategory !== null}"><a href="/articles/{{category | lowercase}}/{{subcategory | lowercase}}">{{subcategory | titlecase}}</a></li>
+      <li *ngIf="category != null" [ngClass]="{'active': subcategory === null}"><a href="/articles/{{category | lowercase}}">{{category | titlecase}} <span *ngIf="displayFlag == 1">({{infiniteScrollCount}})</span></a> </li>
+      <li *ngIf="subcategory != null" [ngClass]="{'active': subcategory !== null}"><a href="/articles/{{category | lowercase}}/{{subcategory | lowercase}}">{{subcategory | titlecase}} <span *ngIf="displayFlag == 2">({{infiniteScrollCount}})</span></a></li>
     </ol>
 
     <div *ngIf="displayFlag == 1">

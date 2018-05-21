@@ -14,10 +14,12 @@ export class ProfileComponent implements OnInit {
   active = "myarticles";
 
   articleCount = 0;
-  myArticles = null;
+  myArticles = Array();
   offset = 0;
   limit = Constants.DEFAULT.TABLE_PAGINATION_LIMIT;
 
+
+  more="Load More";
   fname="";
   fname_err="";
   lname="";
@@ -59,8 +61,9 @@ export class ProfileComponent implements OnInit {
     this.profileService.getMyArticles(this.offset, this.limit).subscribe(
       data => {
         if (data.data != undefined) {
-          this.myArticles = JSON.parse(data.data); 
-          console.log(this.myArticles);
+          JSON.parse(data.data).forEach(element => {
+            this.myArticles.push(element);  
+          });
         }
       }
     );
@@ -75,6 +78,17 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
+
+  getMore(){
+    this.offset = this.offset + this.limit;
+    if(this.offset < this.articleCount ){
+      this.getMyArticles();
+    } else {
+      document.getElementById("get-more").setAttribute("disabled","disabled");
+      this.more="No More Articles Here";
+    }
+  }
+
 
   changeEmail(){
     if(this.validate("email")){
@@ -198,5 +212,4 @@ export class ProfileComponent implements OnInit {
     var re = /^[-A-Za-z0-9_!@#$%&*()]*$/
     return re.test(String(p));
   }
-
 }
