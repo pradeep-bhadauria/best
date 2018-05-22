@@ -122,7 +122,6 @@ export class PageComponent implements OnInit {
           var sub_cat = JSON.parse(data.data);
           this.title.setTitle("Behind Stories: " + this.category + " - " + this.subcategory);
           this.getSubCategoryCount();
-          this.getCategoryCount();
           var html = this.makeContent(sub_cat);
           this.articeBySubCategory += html;
         } catch {

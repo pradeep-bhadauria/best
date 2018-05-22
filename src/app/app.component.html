@@ -12,7 +12,10 @@
                     </a>
                 </div>
                 <div class="add_banner">
-                    <input id="searchbox-main" type="text" name="search" placeholder="Search..">
+                    <div class="inner-addon right-addon">
+                        <i class="glyphicon glyphicon-search"></i>
+                        <input id="searchbox-main" type="text" class="form-control" placeholder="Search.." />
+                    </div>
                 </div>
             </div>
             <!-- Alert Section -->
@@ -62,7 +65,7 @@
                         <span class="glyphicon glyphicon-log-in"></span> Login</a>
                 </li>
                 <li *ngIf="showMenu" class="hidden-lg hidden-md dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> {{currentUser.fname}}</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> {{currentUser.fname}} <i class="fa fa-caret-down"></i></a>
                     <ul class="dropdown-menu" role="menu">
                         <li *ngIf="admin==true"><a href="/user-level">Manage User Level</a></li>
                         <li *ngIf="admin==true"><a href="/category">Manage Categories</a></li>
@@ -89,7 +92,7 @@
                         <span class="glyphicon glyphicon-log-in"></span> Login</a>
                 </li>
                 <li *ngIf="showMenu" class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> {{currentUser.fname}}</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> {{currentUser.fname}} <i class="fa fa-caret-down"></i></a>
                     <ul class="dropdown-menu" role="menu">
                         <li *ngIf="admin==true"><a href="/user-level">Manage User Level</a></li>
                         <li *ngIf="admin==true"><a href="/category">Manage Categories</a></li>

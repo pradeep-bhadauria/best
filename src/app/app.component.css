@@ -19,3 +19,21 @@
 #searchbox-main:focus {
     width: 100% !important;
 }
+
+.inner-addon {
+    position: relative;
+  }
+  
+  /* style glyph */
+  .inner-addon .glyphicon {
+    position: absolute;
+    padding: 23px 10px;
+    pointer-events: none;
+    color: #555555;
+  }
+  
+  /* align glyph */
+  .right-addon .glyphicon { right: 0px;}
+  
+  /* add padding  */
+  .right-addon input { padding-right: 30px; }
