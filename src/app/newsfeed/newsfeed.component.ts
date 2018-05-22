@@ -47,9 +47,9 @@ export class NewsfeedComponent implements OnInit {
 
   ngOnInit() {
 
-    this.meta.addTag({"robots":"index, follow"});
-    this.meta.addTag({"description":"Latest news, sport, technologies, life and style, business, entertainment and a whole lot more. The Behind Stories informs, educates and entertains - wherever you are, whatever your age."});
-    this.meta.addTag({"keywords":"World News Technology Life & Style Business Entertainment Sports and Humour World"});
+    this.meta.addTag({name:"robots",content:"index, follow"});
+    this.meta.addTag({name:"description",content:"Latest news, sport, technologies, life and style, business, entertainment and a whole lot more. The Behind Stories informs, educates and entertains - wherever you are, whatever your age."});
+    this.meta.addTag({name:"keywords",content:"World News Technology Life & Style Business Entertainment Sports and Humour World"});
     this.title.setTitle("Behind Stories - Home");
 
     this.categoriesService.getAll(0, 10).subscribe(

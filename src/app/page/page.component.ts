@@ -212,7 +212,6 @@ export class PageComponent implements OnInit {
                             '</div>'+
                         '</li>'; 
     });
-    //return this.sanitizer.bypassSecurityTrustResourceUrl(htmlStr);
     return htmlStr;
   }
 }
