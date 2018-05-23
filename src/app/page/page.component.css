@@ -4,7 +4,6 @@
     padding: 5px;
 }
 
-img{max-width: 100% !important;}
 iframe{max-width: 400px !important;}
 
 .article-list li {
@@ -12,4 +11,14 @@ iframe{max-width: 400px !important;}
 }
 .loadmore{
     text-align: center;
+}
+
+img {
+    max-width: 100% !important;
+}
+
+.media-left > img {
+    height: 70px !important;
+    width: 90px !important;
+    max-width: 90px !important;
 }

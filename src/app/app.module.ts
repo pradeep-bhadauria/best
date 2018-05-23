@@ -41,7 +41,7 @@ const routes: Routes = [
   { path: 'category', component: CategoryComponent },
   { path: 'subcategory', component: SubcategoryComponent },
   { path: 'contactus', component: ContactusComponent },
-  { path: 'page', component: PageComponent },
+  { path: 'articles/search', component: PageComponent },
   { path: 'articles/:category', component: PageComponent },
   { path: 'articles/:category/:subcategory', component: PageComponent },
   { path: 'articles/:category/:subcategory/:article', component: PageComponent },

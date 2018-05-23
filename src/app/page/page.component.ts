@@ -12,6 +12,7 @@ import { isPlatformBrowser } from '@angular/common';
   encapsulation: ViewEncapsulation.None
 })
 export class PageComponent implements OnInit {
+  query = "";
   infiniteScrollCount = 0;
   offset = 0;
   limit = Constants.DEFAULT.TABLE_PAGINATION_LIMIT;
@@ -24,6 +25,7 @@ export class PageComponent implements OnInit {
   subcategory = null;
   sub_cat_id = null;
   article = null;
+  articeBySearch = '';
   articeByCategory = '';
   articeBySubCategory = '';
   article_id = null;
@@ -49,8 +51,37 @@ export class PageComponent implements OnInit {
       if (params['category'] != undefined) {
         this.category = params['category'];
         this.checkCategory(params);
+      } else {
+        document.getElementById("comments").classList.add("hide");
+        this.route.queryParams.subscribe(params => {
+          if (params['q'] != undefined) {
+            this.query = params['q'];
+            this.displayFlag = 4;
+            this.searchPublishedArticlesCount();
+          }
+        });
       }
     });
+  }
+
+  searchPublishedArticles(){
+    this.pageService.searchPublishedArticles(this.query, this.offset, this.limit).subscribe(
+      data=>{
+        this.title.setTitle("Behind Stories: " + this.query);
+        var articles = JSON.parse(data.data);
+        var html = this.makeContent(articles);
+        this.articeBySearch += html;
+      }
+    );
+  }
+
+  searchPublishedArticlesCount(){
+    this.pageService.searchPublishedArticlesCount(this.query).subscribe(
+      data=>{
+        this.infiniteScrollCount = JSON.parse(data.data).count;
+        this.searchPublishedArticles();
+      }
+    );
   }
 
   checkCategory(params) {
@@ -185,6 +216,8 @@ export class PageComponent implements OnInit {
         this.getArticlesByCategory();
       } else if (this.displayFlag == 2) {
         this.getArticlesBySubCategory();
+      }else if (this.displayFlag == 4) {
+        this.searchPublishedArticles();
       }
     } else {
       document.getElementById("get-more").setAttribute("disabled", "disabled");

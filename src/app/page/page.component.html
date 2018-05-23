@@ -5,6 +5,22 @@
       <li *ngIf="subcategory != null" [ngClass]="{'active': subcategory !== null}"><a href="/articles/{{category | lowercase}}/{{subcategory | lowercase}}">{{subcategory | titlecase}} <span *ngIf="displayFlag == 2">({{infiniteScrollCount}})</span></a></li>
     </ol>
 
+    <div *ngIf="displayFlag == 4">
+        <ul class="article-list" *ngIf="articeBySearch != ''" [innerHTML]="articeBySearch"></ul>
+        <div class="loadmore">
+          <a *ngIf="articeBySearch != ''" class="btn btn-theme" id="get-more" (click)="getMore()">{{more}}</a>
+        </div>
+        <div *ngIf="articeBySearch == ''">
+          <div class="left_content">
+            <div class="error_page">
+              <h3>We Are Sorry</h3>
+              <h2>Your search did not match any article :(</h2>
+              <p>Please try searching something else</p>
+              <span></span> <a href="/" class="wow fadeInLeftBig">Go to home page</a> </div>
+          </div>
+        </div>
+      </div>
+
     <div *ngIf="displayFlag == 1">
       <ul class="article-list" *ngIf="articeByCategory != ''" [innerHTML]="articeByCategory"></ul>
       <div class="loadmore">

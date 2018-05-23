@@ -37,6 +37,26 @@ export class PageService {
       ));
   }
 
+  searchPublishedArticles(q: string, offset: number, limit: number) {
+    var json = {
+      query: q
+    }
+    return this.http.post(
+      Constants.API_ENDPOINT + '/articles/search/' + offset + "/" + limit, json, Constants.jwt()).pipe(map(
+        (response: Response) => response.json()
+      ));
+  }
+
+  searchPublishedArticlesCount(q: string) {
+    var json = {
+      query: q
+    }
+    return this.http.post(
+      Constants.API_ENDPOINT + '/articles/search/count', json, Constants.jwt()).pipe(map(
+        (response: Response) => response.json()
+      ));
+  }
+
   getPublishedArticleByCategoryCount(cat_id: number) {
     return this.http.get(
       Constants.API_ENDPOINT + '/articles/search/' + cat_id + "/count", Constants.jwt()).pipe(map(
