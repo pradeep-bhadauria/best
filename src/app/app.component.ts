@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   menuMap = new Map<string, string[]>();
   catMap = new Map<string, number>();
   latestNews = null;
+  popularArticleList = null;
   constructor(
     private alertService: AlertService,
     private route: ActivatedRoute,
@@ -31,9 +32,8 @@ export class AppComponent implements OnInit {
     }
   }
   ngOnInit() {
-    //this.pageService.getIPLocation();
-
-
+    this.getPopularArticles();
+    
     if (this.currentUser == null) {
       this.showMenu = false;
     } else {
@@ -82,6 +82,14 @@ export class AppComponent implements OnInit {
     this.pageService.getPublishedArticleByCategory(cat_id, 0, 10).subscribe(
       data => {
         this.latestNews = JSON.parse(data.data);
+      }
+    );
+  }
+
+  getPopularArticles() {
+    this.pageService.popularArticles().subscribe(
+      data => {
+        this.popularArticleList = JSON.parse(data.data);
       }
     );
 

@@ -169,21 +169,13 @@
                         <span>Popular Post</span>
                     </h2>
                     <ul class="spost_nav">
-                        <li>
-                            <div class="media wow fadeInDown">
-                                <a href="/page" class="media-left">
-                                    <img alt="" src="/assets/images/post_img1.jpg"> </a>
+                        <li *ngFor="let item of popularArticleList">
+                            <div class="media wow fadeInDown"> 
+                                <a class="media-left" href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}"> 
+                                <img src="{{item.images.thumbnail}}" alt="{{item.subject}}"> 
+                                </a>
                                 <div class="media-body">
-                                    <a href="/page" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="media wow fadeInDown">
-                                <a href="/page" class="media-left">
-                                    <img alt="" src="/assets/images/post_img2.jpg"> </a>
-                                <div class="media-body">
-                                    <a href="/page" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a>
+                                <a class="catg_title" href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}"><h5>{{item.subject}}</h5></a>
                                 </div>
                             </div>
                         </li>
