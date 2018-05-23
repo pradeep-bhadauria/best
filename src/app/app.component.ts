@@ -12,6 +12,7 @@ import { isPlatformBrowser } from '@angular/common';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  isBrowser=false;
   showMenu = false;
   admin = false;
   author = false;
@@ -28,6 +29,7 @@ export class AppComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     if (isPlatformBrowser(this.platformId)) {
+      this.isBrowser = true;
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
   }

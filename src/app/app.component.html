@@ -11,7 +11,7 @@
                         <img src="/assets/img/logo.png" alt="">
                     </a>
                 </div>
-                <div class="add_banner">
+                <div *ngIf="isBrowser" class="add_banner">
                     <form method="GET" action="/articles/search" (submit)="submit()">
                         <div class="inner-addon right-addon">
                             <i class="glyphicon glyphicon-search"></i>
