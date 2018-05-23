@@ -41,7 +41,18 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul  *ngIf="menuMap.size != 0" class="nav navbar-nav main_nav">
-                <li class="active">
+                <li class="hidden-lg hidden-md">
+                    <div *ngIf="isBrowser">
+                        <form method="GET" action="/articles/search" (submit)="submit()">
+                            <div class="inner-addon-sm right-addon">
+                                <i class="glyphicon glyphicon-search"></i>
+                                <input name="q" id="searchbox-main-sm" type="text" class="form-control" placeholder="Search.." />
+                                <button type="submit" style="display:none">hidden submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+                <li>
                     <a href="/">
                         <span class="fa fa-home desktop-home"></span>
                         <span class="mobile-show">Home</span>
