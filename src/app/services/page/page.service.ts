@@ -65,6 +65,41 @@ export class PageService {
       ));
   }
 
+  popularArticles() {
+    return this.http.get(
+      Constants.API_ENDPOINT + '/articles/search/popularity/0/' + Constants.DEFAULT.POPULAR_ARTICLE_LIMIT, Constants.jwt()).pipe(map(
+        (response: Response) => response.json()
+      ));
+  }
+
+  updateViews(article_id: number) {
+    return this.http.put(
+      Constants.API_ENDPOINT + '/articles/' + article_id + '/checked', Constants.jwt()).pipe(map(
+        (response: Response) => response.json()
+      ));
+  }
+
+  relatedArticles(cat_id: number, sub_cat_id: number, article_id: number) {
+    if(cat_id != null && sub_cat_id != null && article_id != null){
+      return this.http.get(
+        Constants.API_ENDPOINT + '/articles/search/related/'+ cat_id + '/' + sub_cat_id + '/' + article_id + '/0/' + Constants.DEFAULT.POPULAR_ARTICLE_LIMIT, Constants.jwt()).pipe(map(
+          (response: Response) => response.json()
+        ));
+    } 
+    else if(cat_id != null && sub_cat_id != null && article_id == null){
+      return this.http.get(
+        Constants.API_ENDPOINT + '/articles/search/related/'+ cat_id + '/' + sub_cat_id +'/0/' + Constants.DEFAULT.POPULAR_ARTICLE_LIMIT, Constants.jwt()).pipe(map(
+          (response: Response) => response.json()
+        ));
+    }
+    else if(cat_id != null && sub_cat_id == null && article_id == null){
+      return this.http.get(
+        Constants.API_ENDPOINT + '/articles/search/related/'+ cat_id +'/0/' + Constants.DEFAULT.POPULAR_ARTICLE_LIMIT, Constants.jwt()).pipe(map(
+          (response: Response) => response.json()
+        ));
+    }
+  }
+
   getIPLocation(){
     /*this.http.get("http://freegeoip.net/json/").subscribe(data => {
       console.log(data);

@@ -17,7 +17,9 @@ export class Constants {
     PUBLISHED: 1,
     OFFSET: 0,
     TABLE_PAGINATION_LIMIT: 10,
-    TABLE_PAGE_OPTIONS: [10, 25, 50, 100]
+    TABLE_PAGE_OPTIONS: [10, 25, 50, 100],
+    POPULAR_ARTICLE_LIMIT:3,
+    RECENT_ARTICLE_LIMIT:3,
   }
 
   public static jwt() {

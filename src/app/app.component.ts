@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver, PLATFORM_ID, Inject } from '@angular/core';
+import { Component,ChangeDetectionStrategy, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver, PLATFORM_ID, Inject } from '@angular/core';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component'
 import { SubCategoriesService, PageService } from './services';
 import { Constants, AlertService } from './utils/index';
@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
+  //changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
@@ -89,9 +90,7 @@ export class AppComponent implements OnInit {
   logout() {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.removeItem('currentUser');
-      if (isPlatformBrowser) {
-        document.location.href = "/"
-      }
+      document.location.href = "/";
     }
   }
 }
