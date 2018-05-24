@@ -1,6 +1,3 @@
-<div id="preloader"><div id="status"></div></div>
-<a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
-
 <!--Header Section -->
 <header id="header">
     <div class="row">
@@ -40,7 +37,7 @@
             </button>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <ul  *ngIf="menuMap.size != 0" class="nav navbar-nav main_nav">
+            <ul *ngIf="menuMap.size != 0" class="nav navbar-nav main_nav">
                 <li class="hidden-lg hidden-md">
                     <div *ngIf="isBrowser">
                         <form method="GET" action="/articles/search" (submit)="submit()">
@@ -59,7 +56,9 @@
                     </a>
                 </li>
                 <li *ngFor="let item of menuMap.keys()" class="dropdown">
-                    <a href="/articles/{{item | lowercase}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{item}} <i class="fa fa-caret-down"></i> </a>
+                    <a href="/articles/{{item | lowercase}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{item}}
+                        <i class="fa fa-caret-down"></i>
+                    </a>
                     <ul class="dropdown-menu" role="menu">
                         <li *ngFor="let val of menuMap.get(item).values()">
                             <a href="/articles/{{item | lowercase}}/{{val | lowercase}}">{{val}}</a>
@@ -79,15 +78,31 @@
                         <span class="glyphicon glyphicon-log-in"></span> Login</a>
                 </li>
                 <li *ngIf="showMenu" class="hidden-lg hidden-md dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> {{currentUser.fname}} <i class="fa fa-caret-down"></i></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <span class="glyphicon glyphicon-user"></span> {{currentUser.fname}}
+                        <i class="fa fa-caret-down"></i>
+                    </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li *ngIf="admin==true"><a href="/user-level">Manage User Level</a></li>
-                        <li *ngIf="admin==true"><a href="/category">Manage Categories</a></li>
-                        <li *ngIf="admin==true"><a href="/subcategory">Manage Sub Categories</a></li>
-                        <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
-                        <li><a href="/editor"><span class="glyphicon glyphicon-edit"></span> Write Article</a></li>
+                        <li *ngIf="admin==true">
+                            <a href="/user-level">Manage User Level</a>
+                        </li>
+                        <li *ngIf="admin==true">
+                            <a href="/category">Manage Categories</a>
+                        </li>
+                        <li *ngIf="admin==true">
+                            <a href="/subcategory">Manage Sub Categories</a>
+                        </li>
+                        <li>
+                            <a href="/profile">
+                                <span class="glyphicon glyphicon-user"></span> My Profile</a>
+                        </li>
+                        <li>
+                            <a href="/editor">
+                                <span class="glyphicon glyphicon-edit"></span> Write Article</a>
+                        </li>
                         <li (click)="logout()">
-                            <a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-log-out"></span> Logout</a>
                         </li>
                     </ul>
                 </li>
@@ -106,15 +121,31 @@
                         <span class="glyphicon glyphicon-log-in"></span> Login</a>
                 </li>
                 <li *ngIf="showMenu" class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> {{currentUser.fname}} <i class="fa fa-caret-down"></i></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <span class="glyphicon glyphicon-user"></span> {{currentUser.fname}}
+                        <i class="fa fa-caret-down"></i>
+                    </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li *ngIf="admin==true"><a href="/user-level">Manage User Level</a></li>
-                        <li *ngIf="admin==true"><a href="/category">Manage Categories</a></li>
-                        <li *ngIf="admin==true"><a href="/subcategory">Manage Sub Categories</a></li>   
-                        <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
-                        <li *ngIf="admin==true || author==true"><a href="/editor"><span class="glyphicon glyphicon-edit"></span> Write Article</a></li>
+                        <li *ngIf="admin==true">
+                            <a href="/user-level">Manage User Level</a>
+                        </li>
+                        <li *ngIf="admin==true">
+                            <a href="/category">Manage Categories</a>
+                        </li>
+                        <li *ngIf="admin==true">
+                            <a href="/subcategory">Manage Sub Categories</a>
+                        </li>
+                        <li>
+                            <a href="/profile">
+                                <span class="glyphicon glyphicon-user"></span> My Profile</a>
+                        </li>
+                        <li *ngIf="admin==true || author==true">
+                            <a href="/editor">
+                                <span class="glyphicon glyphicon-edit"></span> Write Article</a>
+                        </li>
                         <li (click)="logout()">
-                            <a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-log-out"></span> Logout</a>
                         </li>
                     </ul>
                 </li>
@@ -131,7 +162,8 @@
                 <span>Latest News</span>
                 <ul id="ticker01" class="news_sticker">
                     <li *ngFor="let item of latestNews">
-                        <a href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}"><img src="{{item.images.thumbnail}}" alt="">{{item.subject}}</a>
+                        <a href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}">
+                            <img src="{{item.images.thumbnail}}" alt="">{{item.subject}}</a>
                     </li>
                 </ul>
                 <div class="social_area">
@@ -184,13 +216,19 @@
                     </h2>
                     <ul class="spost_nav">
                         <li *ngFor="let item of popularArticleList">
-                            <div class="media wow fadeInDown"> 
-                                <a class="media-left" href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}"> 
-                                <img src="{{item.images.thumbnail}}" alt="{{item.subject}}"> 
+                            <div class="media wow fadeInDown">
+                                <a class="media-left" href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}">
+                                    <img src="{{item.images.thumbnail}}" alt="{{item.subject}}">
                                 </a>
                                 <div class="media-body">
-                                <a class="catg_title" href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}"><h5>{{item.subject}}</h5></a>
+                                    <a class="catg_title" href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}">
+                                        <h5>{{item.subject}}</h5>
+                                    </a>
                                 </div>
+                                <div class="p-single-2">{{item.overview}}</div>
+                                <a class="rm-more" href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}">
+                                    read more..
+                                </a>
                             </div>
                         </li>
                     </ul>
@@ -222,9 +260,9 @@
 
 <!--Footer Section -->
 <footer id="footer">
-        <div class="footer_bottom">
-          <p class="copyright">Copyright &copy; 2018
+    <div class="footer_bottom">
+        <p class="copyright">Copyright &copy; 2018
             <a href="/">BehindStories</a>
-          </p>
-        </div>
+        </p>
+    </div>
 </footer>

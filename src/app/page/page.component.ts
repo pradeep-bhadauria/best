@@ -296,7 +296,7 @@ export class PageComponent implements OnInit {
         '<a class="media-left" href="/articles/' + item.category.name.toLowerCase() + '/' + item.sub_category.name.toLowerCase() + '/' + item.uid + '">' +
         '<img alt="" src="' + item.images.thumbnail + '"/> </a>' +
         '<div class="media-body">' +
-        '<h5><a class="catg_title" href="/articles/' + item.category.name.toLowerCase() + '/' + item.sub_category.name.toLowerCase() + '/' + item.uid + '"> ' + item.subject + '</a></h5>' +
+        '<a class="catg_title" href="/articles/' + item.category.name.toLowerCase() + '/' + item.sub_category.name.toLowerCase() + '/' + item.uid + '"><h5>' + item.subject + '</h5></a>' +
         '<p>' + item.overview + '</p>' +
         '</div>' +
         '</div>' +

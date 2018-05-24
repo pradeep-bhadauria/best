@@ -9,3 +9,13 @@
 .fashion_technology_area{
     min-height: 650px;
 }
+
+.p-single{
+    height: 40px;
+    font-size: 13px;
+    overflow: hidden;
+    margin-bottom: 0px;
+}
+.rm-more{
+    font-size: 12px;
+}

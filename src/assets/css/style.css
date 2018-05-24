@@ -51,7 +51,7 @@ img:hover{opacity:0.75}
 .transition{-webkit-transition:all 0.5s; -moz-transition:all 0.5s; -ms-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s}
 #preloader{position:fixed; top:0; left:0; right:0; bottom:0; background-color:rgba(255, 255, 255, 0.9); z-index:99999}
 #status{width:200px; height:200px; position:absolute; left:50%; top:50%; background-image:url(images/status.gif); background-repeat:no-repeat; background-position:center; margin:-100px 0 0 -100px}
-.scrollToTop{bottom:50px; display:none; font-size:32px; font-weight:bold; height:50px; position:fixed; right:50px; text-align:center; text-decoration:none; width:50px; z-index:9; border:1px solid; -webkit-transition:all 0.5s; -moz-transition:all 0.5s; -ms-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s}
+.scrollToTop{cursor:pointer;bottom:50px; display:none; font-size:32px; font-weight:bold; height:50px; position:fixed; right:50px; text-align:center; text-decoration:none; width:50px; z-index:9; border:1px solid; -webkit-transition:all 0.5s; -moz-transition:all 0.5s; -ms-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s}
 .scrollToTop:hover, .scrollToTop:focus{text-decoration:none; outline:none}
 #header{display:inline; float:left; width:100%; margin-top:20px}
 .header_top{background-color:#2c2c2c; display:inline; float:left; padding:0 30px; width:100%}
@@ -316,4 +316,15 @@ input {
 .search-box{
     border: 1px #efefef !important;
     border-radius: 5px 0px 0px 5px!important;
+}
+
+.catg_title h5 {margin:0px 0px;line-height: 19px;}
+.p-single-2{
+    height: 20px;
+    font-size: 13px;
+    overflow: hidden;
+    margin-bottom: 0px;
+}
+.rm-more{
+    font-size: 12px;
 }
