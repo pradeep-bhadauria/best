@@ -59,6 +59,7 @@
       <div class="post_commentbox"> 
         <span><i class="fa fa-user"></i>{{article.author.user_fname}} {{article.author.user_lname}}</span> 
         <span><i class="fa fa-calendar"></i>{{article.created | amFromUtc | amTimeAgo}}</span> 
+        <span><i class="fa fa-eye"></i>{{article.views}}</span> 
         <span *ngIf="article.country != ''"><i class="fa fa-map-marker"></i>{{article.city}} {{article.state.split("-")[1]}} {{article.country}}</span> 
       </div>
       <div class="single_page_content"> 
