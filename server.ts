@@ -7,6 +7,8 @@ import {ngExpressEngine} from '@nguniversal/express-engine';
 import {provideModuleMap} from '@nguniversal/module-map-ngfactory-loader';
 
 import * as express from 'express';
+import * as compression from 'compression';
+
 import {join} from 'path';
 
 // Faster server renders w/ Prod mode (dev mode never needed)
@@ -14,6 +16,43 @@ enableProdMode();
 
 // Express server
 const app = express();
+app.use(compression());
+
+
+const redirectowww = true;
+const redirectohttps = false;
+const wwwredirecto = false;
+app.use((req, res, next) => {
+  // for domain/index.html
+  if (req.url == '/index.html') {
+    res.redirect(301, 'http://' + req.hostname);
+  }
+
+  // check if it is a secure (https) request
+  // if not redirect to the equivalent https url
+  if (redirectohttps && req.headers['x-forwarded-proto'] != 'http') {
+    // special for robots.txt
+    if (req.url == '/robots.txt') {
+      next();
+      return;
+    }
+    res.redirect(301, 'http://' + req.hostname + req.url);
+  }
+
+  // www or not
+  if (redirectowww && !req.hostname.startsWith('www.')) {
+    res.redirect(301, 'http://www.' + req.hostname + req.url);
+  }
+
+  // www or not
+  if (wwwredirecto && req.hostname.startsWith('www.')) {
+    const host = req.hostname.slice(4, req.hostname.length);
+    res.redirect(301, 'http://' + host + req.url);
+  }
+  next();
+}
+);
+
 
 const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), 'dist');
