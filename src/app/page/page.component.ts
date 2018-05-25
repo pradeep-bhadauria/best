@@ -44,7 +44,9 @@ export class PageComponent implements OnInit {
     private title: Title,
     private meta: Meta,
     @Inject(PLATFORM_ID) private platformId: Object
-  ) { }
+  ) {
+
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -52,7 +54,9 @@ export class PageComponent implements OnInit {
         this.category = params['category'];
         this.checkCategory(params);
       } else {
-        document.getElementById("comments").classList.add("hide");
+        if (isPlatformBrowser(this.platformId)) {
+          document.getElementById("comments").classList.add("hide");
+        }
         this.route.queryParams.subscribe(params => {
           if (params['q'] != undefined) {
             this.query = params['q'];
@@ -64,9 +68,9 @@ export class PageComponent implements OnInit {
     });
   }
 
-  searchPublishedArticles(){
+  searchPublishedArticles() {
     this.pageService.searchPublishedArticles(this.query, this.offset, this.limit).subscribe(
-      data=>{
+      data => {
         this.title.setTitle("Behind Stories: " + this.query);
         var articles = JSON.parse(data.data);
         var html = this.makeContent(articles);
@@ -75,9 +79,9 @@ export class PageComponent implements OnInit {
     );
   }
 
-  searchPublishedArticlesCount(){
+  searchPublishedArticlesCount() {
     this.pageService.searchPublishedArticlesCount(this.query).subscribe(
-      data=>{
+      data => {
         this.infiniteScrollCount = JSON.parse(data.data).count;
         this.searchPublishedArticles();
       }
@@ -95,12 +99,16 @@ export class PageComponent implements OnInit {
             this.subcategory = params['subcategory'];
             this.checkSubCategory(params);
           } else {
-            document.getElementById("comments").classList.add("hide");
+            if (isPlatformBrowser(this.platformId)) {
+              document.getElementById("comments").classList.add("hide");
+            }
             this.getArticlesByCategory();
             this.relatedArticles();
           }
         } else {
-          document.location.href = "/404";
+          if (isPlatformBrowser(this.platformId)) {
+            document.location.href = "/404";
+          }
         }
       },
       error => {
@@ -120,12 +128,16 @@ export class PageComponent implements OnInit {
             this.uid = params['article'];
             this.getArticleByUid();
           } else {
-            document.getElementById("comments").classList.add("hide");
+            if (isPlatformBrowser(this.platformId)) {
+              document.getElementById("comments").classList.add("hide");
+            }
             this.getArticlesBySubCategory();
             this.relatedArticles();
           }
         } else {
-          document.location.href = "/404";
+          if (isPlatformBrowser(this.platformId)) {
+            document.location.href = "/404";
+          }
         }
       },
       error => {
@@ -142,7 +154,6 @@ export class PageComponent implements OnInit {
           var cat = JSON.parse(data.data);
           this.getCategoryCount();
           var html = this.makeContent(cat);
-          //document.getElementById("articeBySubCategoryContainer").innerHTML += html;
           this.articeByCategory += html;
           this.relatedArticles();
         } catch {
@@ -171,19 +182,25 @@ export class PageComponent implements OnInit {
   }
 
   getArticleByUid() {
-    this.url = document.location.href;
+    if (isPlatformBrowser(this.platformId)) {
+      this.url = document.location.href;
+    }
     this.pageService.getArticleByUid(this.uid).subscribe(
       data => {
         if (data.data != undefined) {
           var temp = JSON.parse(data.data);
           this.article_id = temp.id;
           if (this.currentUser == null && temp.is_published != Constants.DEFAULT.PUBLISHED) {
-            document.location.href = "/404";
+            if (isPlatformBrowser(this.platformId)) {
+              document.location.href = "/404";
+            }
           } else if (this.currentUser != null &&
             this.currentUser.id != temp.author.id &&
             temp.is_published != Constants.DEFAULT.PUBLISHED &&
             this.currentUser.tid != Constants.ROLES.ADMIN) {
-            document.location.href = "/404";
+            if (isPlatformBrowser(this.platformId)) {
+              document.location.href = "/404";
+            }
           } else {
             this.article = temp;
             this.article.body = this.sanitizer.bypassSecurityTrustHtml(this.article.body)
@@ -191,28 +208,28 @@ export class PageComponent implements OnInit {
             this.article.keywords.forEach(element => {
               keyword = keyword + " " + element.keyword;
             });
-            
-            this.meta.addTag({name:"robots",content:Constants.META_DEFAULT.FOLLOW});
-            this.meta.addTag({name:"description",content:this.article.overview});
-            this.meta.addTag({name:"keywords",content:keyword.trim()});
-            this.meta.addTag({name:"image", content:this.article.images.banner});
-            this.meta.addTag({itemprop:"name", content:this.article.subject});
-            this.meta.addTag({itemprop:"description", content:this.article.overview});
-            this.meta.addTag({itemprop:"image", content:this.article.images.banner});
-            this.meta.addTag({name:"twitter:card", content:"summary"});
-            this.meta.addTag({name:"twitter:title", content:this.article.subject});
-            this.meta.addTag({name:"twitter:description", content:this.article.overview});
-            this.meta.addTag({name:"twitter:site", content:Constants.META_DEFAULT.TWITTER_USER});
-            this.meta.addTag({name:"twitter:creator", content:Constants.META_DEFAULT.TWITTER_USER});
-            this.meta.addTag({name:"twitter:image:src", content:this.article.images.banner});
-            this.meta.addTag({name:"og:title", content:this.article.subject});
-            this.meta.addTag({name:"og:description", content:this.article.overview});
-            this.meta.addTag({name:"og:image", content:this.article.images.banner});
-            this.meta.addTag({name:"og:url", content:Constants.META_DEFAULT.SITE_URL});
-            this.meta.addTag({name:"og:site_name", content:Constants.META_DEFAULT.SITE_NAME});
-            this.meta.addTag({name:"fb:admins", content:Constants.META_DEFAULT.FB_ADMIN});
-            this.meta.addTag({name:"fb:app_id", content:Constants.META_DEFAULT.FB_APP_ID});
-            this.meta.addTag({name:"og:type", content:"website"});
+
+            this.meta.addTag({ name: "robots", content: Constants.META_DEFAULT.FOLLOW });
+            this.meta.addTag({ name: "description", content: this.article.overview });
+            this.meta.addTag({ name: "keywords", content: keyword.trim() });
+            this.meta.addTag({ name: "image", content: this.article.images.banner });
+            this.meta.addTag({ itemprop: "name", content: this.article.subject });
+            this.meta.addTag({ itemprop: "description", content: this.article.overview });
+            this.meta.addTag({ itemprop: "image", content: this.article.images.banner });
+            this.meta.addTag({ name: "twitter:card", content: "summary" });
+            this.meta.addTag({ name: "twitter:title", content: this.article.subject });
+            this.meta.addTag({ name: "twitter:description", content: this.article.overview });
+            this.meta.addTag({ name: "twitter:site", content: Constants.META_DEFAULT.TWITTER_USER });
+            this.meta.addTag({ name: "twitter:creator", content: Constants.META_DEFAULT.TWITTER_USER });
+            this.meta.addTag({ name: "twitter:image:src", content: this.article.images.banner });
+            this.meta.addTag({ name: "og:title", content: this.article.subject });
+            this.meta.addTag({ name: "og:description", content: this.article.overview });
+            this.meta.addTag({ name: "og:image", content: this.article.images.banner });
+            this.meta.addTag({ name: "og:url", content: Constants.META_DEFAULT.SITE_URL });
+            this.meta.addTag({ name: "og:site_name", content: Constants.META_DEFAULT.SITE_NAME });
+            this.meta.addTag({ name: "fb:admins", content: Constants.META_DEFAULT.FB_ADMIN });
+            this.meta.addTag({ name: "fb:app_id", content: Constants.META_DEFAULT.FB_APP_ID });
+            this.meta.addTag({ name: "og:type", content: "website" });
             this.title.setTitle(this.article.subject);
 
             this.displayFlag = 3;
@@ -220,7 +237,9 @@ export class PageComponent implements OnInit {
             this.pageView();
           }
         } else {
-          document.location.href = "/404"
+          if (isPlatformBrowser(this.platformId)) {
+            document.location.href = "/404"
+          }
         }
       },
       error => {
@@ -236,11 +255,13 @@ export class PageComponent implements OnInit {
         this.getArticlesByCategory();
       } else if (this.displayFlag == 2) {
         this.getArticlesBySubCategory();
-      }else if (this.displayFlag == 4) {
+      } else if (this.displayFlag == 4) {
         this.searchPublishedArticles();
       }
     } else {
-      document.getElementById("get-more").setAttribute("disabled", "disabled");
+      if (isPlatformBrowser(this.platformId)) {
+        document.getElementById("get-more").setAttribute("disabled", "disabled");
+      }
       this.more = "No More Articles Here";
     }
   }
