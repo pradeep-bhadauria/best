@@ -54,9 +54,7 @@ export class PageComponent implements OnInit {
         this.category = params['category'];
         this.checkCategory(params);
       } else {
-        if (isPlatformBrowser(this.platformId)) {
-          document.getElementById("comments").classList.add("hide");
-        }
+        document.getElementById("comments").classList.add("hide");
         this.route.queryParams.subscribe(params => {
           if (params['q'] != undefined) {
             this.query = params['q'];
@@ -99,16 +97,12 @@ export class PageComponent implements OnInit {
             this.subcategory = params['subcategory'];
             this.checkSubCategory(params);
           } else {
-            if (isPlatformBrowser(this.platformId)) {
-              document.getElementById("comments").classList.add("hide");
-            }
+            document.getElementById("comments").classList.add("hide");
             this.getArticlesByCategory();
             this.relatedArticles();
           }
         } else {
-          if (isPlatformBrowser(this.platformId)) {
-            document.location.href = "/404";
-          }
+          document.location.href = "/404";
         }
       },
       error => {
@@ -128,16 +122,12 @@ export class PageComponent implements OnInit {
             this.uid = params['article'];
             this.getArticleByUid();
           } else {
-            if (isPlatformBrowser(this.platformId)) {
-              document.getElementById("comments").classList.add("hide");
-            }
+            document.getElementById("comments").classList.add("hide");
             this.getArticlesBySubCategory();
             this.relatedArticles();
           }
         } else {
-          if (isPlatformBrowser(this.platformId)) {
-            document.location.href = "/404";
-          }
+          document.location.href = "/404";
         }
       },
       error => {
@@ -182,25 +172,19 @@ export class PageComponent implements OnInit {
   }
 
   getArticleByUid() {
-    if (isPlatformBrowser(this.platformId)) {
-      this.url = document.location.href;
-    }
+    this.url = document.location.href;
     this.pageService.getArticleByUid(this.uid).subscribe(
       data => {
         if (data.data != undefined) {
           var temp = JSON.parse(data.data);
           this.article_id = temp.id;
           if (this.currentUser == null && temp.is_published != Constants.DEFAULT.PUBLISHED) {
-            if (isPlatformBrowser(this.platformId)) {
-              document.location.href = "/404";
-            }
+            document.location.href = "/404";
           } else if (this.currentUser != null &&
             this.currentUser.id != temp.author.id &&
             temp.is_published != Constants.DEFAULT.PUBLISHED &&
             this.currentUser.tid != Constants.ROLES.ADMIN) {
-            if (isPlatformBrowser(this.platformId)) {
-              document.location.href = "/404";
-            }
+            document.location.href = "/404";
           } else {
             this.article = temp;
             this.article.body = this.sanitizer.bypassSecurityTrustHtml(this.article.body)
@@ -237,9 +221,7 @@ export class PageComponent implements OnInit {
             this.pageView();
           }
         } else {
-          if (isPlatformBrowser(this.platformId)) {
-            document.location.href = "/404"
-          }
+          document.location.href = "/404"
         }
       },
       error => {
@@ -259,9 +241,7 @@ export class PageComponent implements OnInit {
         this.searchPublishedArticles();
       }
     } else {
-      if (isPlatformBrowser(this.platformId)) {
-        document.getElementById("get-more").setAttribute("disabled", "disabled");
-      }
+      document.getElementById("get-more").setAttribute("disabled", "disabled");
       this.more = "No More Articles Here";
     }
   }
