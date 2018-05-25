@@ -51,4 +51,17 @@ export class Constants {
     SPORTS: "Sports",
     HUMOUR: "Humour"
   }
+
+  public static META_DEFAULT = {
+    DESCRIPTION: "Latest news, sport, technologies, life and style, business, entertainment and a whole lot more. The Behind Stories informs, educates and entertains - wherever you are, whatever your age.",
+    IMAGE:"http://www.behindstories.com/assets/img/favicon-256.png",
+    TITLE:"Behind Stories - Home",
+    TWITTER_USER:"@BehindStories",
+    FB_ADMIN: "100026083039160",
+    FB_APP_ID:"242326843180688",
+    SITE_NAME: "Behind Stories",
+    SITE_URL: "http://www.behindstories.com",
+    FOLLOW: "index, follow",
+    NO_FOLLOW:"noindex, nofollow"
+  }
 }

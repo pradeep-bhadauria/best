@@ -46,11 +46,28 @@ export class NewsfeedComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.meta.addTag({name:"robots",content:"index, follow"});
-    this.meta.addTag({name:"description",content:"Latest news, sport, technologies, life and style, business, entertainment and a whole lot more. The Behind Stories informs, educates and entertains - wherever you are, whatever your age."});
+    this.meta.addTag({name:"robots",content:Constants.META_DEFAULT.FOLLOW});
+    this.meta.addTag({name:"description",content:Constants.META_DEFAULT.DESCRIPTION});
     this.meta.addTag({name:"keywords",content:"World News Technology Life & Style Business Entertainment Sports and Humour World"});
-    this.title.setTitle("Behind Stories - Home");
+    this.meta.addTag({name:"image", content:Constants.META_DEFAULT.IMAGE});
+    this.meta.addTag({itemprop:"name", content:Constants.META_DEFAULT.TITLE});
+    this.meta.addTag({itemprop:"description", content:Constants.META_DEFAULT.DESCRIPTION});
+    this.meta.addTag({itemprop:"image", content:Constants.META_DEFAULT.IMAGE});
+    this.meta.addTag({name:"twitter:card", content:"summary"});
+    this.meta.addTag({name:"twitter:title", content:Constants.META_DEFAULT.TITLE});
+    this.meta.addTag({name:"twitter:description", content:Constants.META_DEFAULT.DESCRIPTION});
+    this.meta.addTag({name:"twitter:site", content:Constants.META_DEFAULT.TWITTER_USER});
+    this.meta.addTag({name:"twitter:creator", content:Constants.META_DEFAULT.TWITTER_USER});
+    this.meta.addTag({name:"twitter:image:src", content:Constants.META_DEFAULT.IMAGE});
+    this.meta.addTag({name:"og:title", content:Constants.META_DEFAULT.TITLE});
+    this.meta.addTag({name:"og:description", content:Constants.META_DEFAULT.DESCRIPTION});
+    this.meta.addTag({name:"og:image", content:Constants.META_DEFAULT.IMAGE});
+    this.meta.addTag({name:"og:url", content:Constants.META_DEFAULT.SITE_URL});
+    this.meta.addTag({name:"og:site_name", content:Constants.META_DEFAULT.SITE_NAME});
+    this.meta.addTag({name:"fb:admins", content:Constants.META_DEFAULT.FB_ADMIN});
+    this.meta.addTag({name:"fb:app_id", content:Constants.META_DEFAULT.FB_APP_ID});
+    this.meta.addTag({name:"og:type", content:"website"});
+    this.title.setTitle(Constants.META_DEFAULT.TITLE);
 
     this.categoriesService.getAll(0, 10).subscribe(
       data => {
