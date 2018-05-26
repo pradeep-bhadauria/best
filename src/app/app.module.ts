@@ -29,7 +29,7 @@ import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ComfirmemailComponent } from './comfirmemail/comfirmemail.component';
 
-import { AlertComponent, AlertService } from './utils/index';
+import { AlertComponent, AlertService, SeoService } from './utils/index';
 import { UserlevelService, UserService, CategoriesService, SubCategoriesService, CMSService, ProfileService, PageService } from './services/index';
 import { CmsComponent } from './cms/cms.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -91,7 +91,7 @@ const routes: Routes = [
   ],
   providers: [
     UserlevelService,UserService, CategoriesService, SubCategoriesService, CMSService,ProfileService,PageService,
-    AlertService
+    AlertService, SeoService
   ],
   bootstrap: [AppComponent]
 })

@@ -70,23 +70,23 @@
         <p [innerHTML]="article.body"></p>
       </div>
   </div>
-  <div id="comments">
-    <fb-comments href="{{url}}" data-numposts="10"></fb-comments>
-  </div>
-  <div *ngIf="article != null" class="related_post">
-    <h2>Related Post <i class="fa fa-thumbs-o-up"></i></h2>
-    <ul class="spost_nav wow fadeInDown animated">
-      <li *ngFor="let item of relatedArticlesList">
-        <div class="media"> 
-          <a class="media-left" href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}"> 
-            <img src="{{item.images.thumbnail}}" alt="{{item.subject}}"> 
-          </a>
-          <div class="media-body">
-            <a class="catg_title" href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}"><h5>{{item.subject}}</h5></a>
-          </div>
+</div>
+<div id="comments">
+  <fb-comments href="{{url}}" data-numposts="10"></fb-comments>
+</div>
+<div *ngIf="article != null" class="related_post">
+  <h2>Related Post <i class="fa fa-thumbs-o-up"></i></h2>
+  <ul class="spost_nav wow fadeInDown animated">
+    <li *ngFor="let item of relatedArticlesList">
+      <div class="media"> 
+        <a class="media-left" href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}"> 
+          <img src="{{item.images.thumbnail}}" alt="{{item.subject}}"> 
+        </a>
+        <div class="media-body">
+          <a class="catg_title" href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}"><h5>{{item.subject}}</h5></a>
         </div>
-      </li>
-    </ul>
-  </div>
+      </div>
+    </li>
+  </ul>
 </div>
 
