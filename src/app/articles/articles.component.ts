@@ -40,7 +40,6 @@ export class ArticlesComponent implements OnInit {
     this.meta.addTag({ name: "robots", content: Constants.META_DEFAULT.FOLLOW });
     this.meta.addTag({ name: "twitter:site", content: Constants.META_DEFAULT.TWITTER_USER });
     this.meta.addTag({ name: "twitter:creator", content: Constants.META_DEFAULT.TWITTER_USER });
-    this.meta.addTag({ name: "og:url", content: Constants.META_DEFAULT.SITE_URL });
     this.meta.addTag({ name: "og:site_name", content: Constants.META_DEFAULT.SITE_NAME });
     this.meta.addTag({ name: "fb:admins", content: Constants.META_DEFAULT.FB_ADMIN });
     this.meta.addTag({ name: "fb:app_id", content: Constants.META_DEFAULT.FB_APP_ID });
@@ -80,6 +79,10 @@ export class ArticlesComponent implements OnInit {
               this.keywords = this.keywords + " " + element.keyword;
             });
             this.title.setTitle(this.article.subject);
+            this.meta.addTag({ name: "og:url", content: Constants.META_DEFAULT.SITE_URL +"/articles/"+this.category+"/"+this.subcategory+"/"+this.uid});
+            this.meta.addTag({ name: "og:title", content: this.article.subject });
+            this.meta.addTag({ name: "og:description", content: this.article.overview });
+            this.meta.addTag({ name: "og:image", content: this.article.images.banner });
             this.meta.addTag({ name: "description", content: this.article.overview });
             this.meta.addTag({ name: "keywords", content: this.keywords.trim() });
             this.meta.addTag({ name: "image", content: this.article.images.banner });
@@ -90,9 +93,7 @@ export class ArticlesComponent implements OnInit {
             this.meta.addTag({ name: "twitter:title", content: this.article.subject });
             this.meta.addTag({ name: "twitter:description", content: this.article.overview });
             this.meta.addTag({ name: "twitter:image:src", content: this.article.images.banner });
-            this.meta.addTag({ name: "og:title", content: this.article.subject });
-            this.meta.addTag({ name: "og:description", content: this.article.overview });
-            this.meta.addTag({ name: "og:image", content: this.article.images.banner });
+            this.meta.addTag({ name: "twitter:image", content: this.article.images.banner });
             
             this.pageService.getCategoryByName(this.category).subscribe(
               data => {
