@@ -46,6 +46,10 @@ export class ArticlesComponent implements OnInit {
     this.meta.addTag({ name: "fb:app_id", content: Constants.META_DEFAULT.FB_APP_ID });
     this.meta.addTag({ name: "og:type", content: "website" });
 
+    if (isPlatformBrowser(this.platformId)) {
+      this.url = document.location.href;
+    }
+
     this.route.params.subscribe(params => {
       this.uid = params['article'];
       this.category = params['category'];
@@ -72,6 +76,11 @@ export class ArticlesComponent implements OnInit {
           } else {
             this.article = temp;
 
+            this.article.body = this.sanitizer.bypassSecurityTrustHtml(this.article.body)
+            this.article.keywords.forEach(element => {
+              this.keywords = this.keywords + " " + element.keyword;
+            });
+
             this.meta.addTag({ name: "description", content: this.article.overview });
             this.meta.addTag({ name: "keywords", content: this.keywords.trim() });
             this.meta.addTag({ name: "image", content: this.article.images.banner });
@@ -85,16 +94,7 @@ export class ArticlesComponent implements OnInit {
             this.meta.addTag({ name: "og:title", content: this.article.subject });
             this.meta.addTag({ name: "og:description", content: this.article.overview });
             this.meta.addTag({ name: "og:image", content: this.article.images.banner });
-
-            this.article.body = this.sanitizer.bypassSecurityTrustHtml(this.article.body)
-            var keyword = "";
-            this.article.keywords.forEach(element => {
-              keyword = keyword + " " + element.keyword;
-            });
-            if (isPlatformBrowser(this.platformId)) {
-              this.url = document.location.href;
-            }
-
+            
             this.pageService.getCategoryByName(this.category).subscribe(
               data => {
                 if (data.data != undefined) {

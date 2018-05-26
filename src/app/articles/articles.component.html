@@ -1,25 +1,29 @@
-<h1 *ngIf="article != null">{{article.subject}}</h1>
-<div *ngIf="article != null" class="post_commentbox">
-    <span>
-        <i class="fa fa-user"></i>{{article.author.user_fname}} {{article.author.user_lname}}</span>
-    <span>
-        <i class="fa fa-calendar"></i>{{article.created | amFromUtc | amTimeAgo}}</span>
-    <span>
-        <i class="fa fa-eye"></i>{{article.views}}</span>
-    <span *ngIf="article.country != ''">
-        <i class="fa fa-map-marker"></i>{{article.city}} {{article.state.split("-")[1]}} {{article.country}}</span>
+<div class="single_post_content">
+    <article *ngIf="article != null">
+        <h1>{{article.subject}}</h1>
+        <div class="post_commentbox">
+            <span>
+                <i class="fa fa-user"></i>{{article.author.user_fname}} {{article.author.user_lname}}</span>
+            <span>
+                <i class="fa fa-calendar"></i>{{article.created | amFromUtc | amTimeAgo}}</span>
+            <span>
+                <i class="fa fa-eye"></i>{{article.views}}</span>
+            <span *ngIf="article.country != ''">
+                <i class="fa fa-map-marker"></i>{{article.city}} {{article.state.split("-")[1]}} {{article.country}}</span>
+        </div>
+        <div class="single_page_content">
+            <div>
+                <blockquote>{{article.overview}}</blockquote>
+                <img *ngIf="article.images.banner != ''" class="img-center banner-image" src="{{article.images.banner}}" alt="">
+            </div>
+            <p [innerHTML]="article.body"></p>
+        </div>
+    </article>
 </div>
-<div class="single_page_content">
-    <div>
-        <blockquote>{{article.overview}}</blockquote>
-        <img *ngIf="article.images.banner != ''" class="img-center banner-image" src="{{article.images.banner}}" alt="">
-    </div>
-    <p [innerHTML]="article.body"></p>
-</div>
-<div id="comments">
+<div id="comments" class="single_post_content">
     <fb-comments href="{{url}}" data-numposts="10" data-width="100%"></fb-comments>
 </div>
-<div *ngIf="article != null" class="related_post">
+<div *ngIf="article != null" class="related_post single_post_content">
     <h2>Related Post
         <i class="fa fa-thumbs-o-up"></i>
     </h2>
