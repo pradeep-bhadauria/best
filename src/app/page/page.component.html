@@ -11,14 +11,12 @@
       <div class="loadmore">
         <a *ngIf="articeBySearch != ''" class="btn btn-theme" id="get-more" (click)="getMore()">{{more}}</a>
       </div>
-      <div *ngIf="infiniteScrollCount == 0">
-        <div class="left_content">
-          <div class="error_page">
-            <h3>We Are Sorry</h3>
-            <h2>Your search did not match any article :(</h2>
-            <p>Please try searching something else</p>
-            <span></span> <a href="/" class="wow fadeInLeftBig">Go to home page</a> </div>
-        </div>
+      <div id="search-err" class="left_content hide">
+        <div class="error_page">
+          <h3>We Are Sorry</h3>
+          <h2>Your search did not match any article :(</h2>
+          <p>Please try searching something else</p>
+          <span></span> <a href="/" class="wow fadeInLeftBig">Go to home page</a> </div>
       </div>
     </div>
 
@@ -53,40 +51,5 @@
         </div>
       </div>
     </div>
-
-    <div *ngIf="displayFlag == 3">
-      <h1>{{article.subject}}</h1>
-      <div class="post_commentbox"> 
-        <span><i class="fa fa-user"></i>{{article.author.user_fname}} {{article.author.user_lname}}</span> 
-        <span><i class="fa fa-calendar"></i>{{article.created | amFromUtc | amTimeAgo}}</span> 
-        <span><i class="fa fa-eye"></i>{{article.views}}</span> 
-        <span *ngIf="article.country != ''"><i class="fa fa-map-marker"></i>{{article.city}} {{article.state.split("-")[1]}} {{article.country}}</span> 
-      </div>
-      <div class="single_page_content"> 
-        <div>
-          <blockquote>{{article.overview}}</blockquote>
-          <img *ngIf="article.images.banner != ''"class="img-center banner-image" src="{{article.images.banner}}" alt="">
-        </div>
-        <p [innerHTML]="article.body"></p>
-      </div>
-  </div>
-</div>
-<div id="comments">
-  <fb-comments href="{{url}}" data-numposts="10"></fb-comments>
-</div>
-<div *ngIf="article != null" class="related_post">
-  <h2>Related Post <i class="fa fa-thumbs-o-up"></i></h2>
-  <ul class="spost_nav wow fadeInDown animated">
-    <li *ngFor="let item of relatedArticlesList">
-      <div class="media"> 
-        <a class="media-left" href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}"> 
-          <img src="{{item.images.thumbnail}}" alt="{{item.subject}}"> 
-        </a>
-        <div class="media-body">
-          <a class="catg_title" href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}"><h5>{{item.subject}}</h5></a>
-        </div>
-      </div>
-    </li>
-  </ul>
 </div>
 

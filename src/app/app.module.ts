@@ -28,6 +28,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ComfirmemailComponent } from './comfirmemail/comfirmemail.component';
+import { ArticlesComponent } from './articles/articles.component';
 
 import { AlertComponent, AlertService, SeoService } from './utils/index';
 import { UserlevelService, UserService, CategoriesService, SubCategoriesService, CMSService, ProfileService, PageService } from './services/index';
@@ -44,7 +45,7 @@ const routes: Routes = [
   { path: 'articles/search', component: PageComponent },
   { path: 'articles/:category', component: PageComponent },
   { path: 'articles/:category/:subcategory', component: PageComponent },
-  { path: 'articles/:category/:subcategory/:article', component: PageComponent },
+  { path: 'articles/:category/:subcategory/:article', component: ArticlesComponent },
   { path: '404', component: NotfoundComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
@@ -75,7 +76,8 @@ const routes: Routes = [
     ForgotPasswordComponent,
     ComfirmemailComponent,
     CmsComponent,
-    ProfileComponent
+    ProfileComponent,
+    ArticlesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'behind-stories'}),

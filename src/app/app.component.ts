@@ -1,5 +1,6 @@
 import { Component,ChangeDetectionStrategy, OnInit, ViewChild, ViewContainerRef, ComponentFactoryResolver, PLATFORM_ID, Inject } from '@angular/core';
-import { NewsfeedComponent } from './newsfeed/newsfeed.component'
+import { NewsfeedComponent } from './newsfeed/newsfeed.component';
+import { ArticlesComponent } from './articles/articles.component';
 import { SubCategoriesService, PageService } from './services';
 import { Constants, AlertService } from './utils/index';
 import { ActivatedRoute, Router } from '@angular/router';

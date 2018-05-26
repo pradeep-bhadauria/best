@@ -1,0 +1,40 @@
+<h1 *ngIf="article != null">{{article.subject}}</h1>
+<div *ngIf="article != null" class="post_commentbox">
+    <span>
+        <i class="fa fa-user"></i>{{article.author.user_fname}} {{article.author.user_lname}}</span>
+    <span>
+        <i class="fa fa-calendar"></i>{{article.created | amFromUtc | amTimeAgo}}</span>
+    <span>
+        <i class="fa fa-eye"></i>{{article.views}}</span>
+    <span *ngIf="article.country != ''">
+        <i class="fa fa-map-marker"></i>{{article.city}} {{article.state.split("-")[1]}} {{article.country}}</span>
+</div>
+<div class="single_page_content">
+    <div>
+        <blockquote>{{article.overview}}</blockquote>
+        <img *ngIf="article.images.banner != ''" class="img-center banner-image" src="{{article.images.banner}}" alt="">
+    </div>
+    <p [innerHTML]="article.body"></p>
+</div>
+<div id="comments">
+    <fb-comments href="{{url}}" data-numposts="10" data-width="100%"></fb-comments>
+</div>
+<div *ngIf="article != null" class="related_post">
+    <h2>Related Post
+        <i class="fa fa-thumbs-o-up"></i>
+    </h2>
+    <ul class="spost_nav wow fadeInDown animated">
+        <li *ngFor="let item of relatedArticlesList">
+            <div class="media">
+                <a class="media-left" href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}">
+                    <img src="{{item.images.thumbnail}}" alt="{{item.subject}}">
+                </a>
+                <div class="media-body">
+                    <a class="catg_title" href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}">
+                        <h5>{{item.subject}}</h5>
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
