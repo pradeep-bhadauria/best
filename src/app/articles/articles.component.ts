@@ -54,7 +54,6 @@ export class ArticlesComponent implements OnInit {
       this.uid = params['article'];
       this.category = params['category'];
       this.subcategory = params['subcategory'];
-      this.title.setTitle(this.uid.replace(/\-/g, " "));
     });
 
     this.pageService.getArticleByUid(this.uid).subscribe(
@@ -80,7 +79,7 @@ export class ArticlesComponent implements OnInit {
             this.article.keywords.forEach(element => {
               this.keywords = this.keywords + " " + element.keyword;
             });
-
+            this.title.setTitle(this.article.subject);
             this.meta.addTag({ name: "description", content: this.article.overview });
             this.meta.addTag({ name: "keywords", content: this.keywords.trim() });
             this.meta.addTag({ name: "image", content: this.article.images.banner });

@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import {NgModule, PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import {TransferHttpCacheModule} from '@nguniversal/common';
+import { DisqusModule } from 'angular2-disqus';
 
 //Services
 import { NgDatepickerModule } from 'ng2-datepicker';
@@ -88,7 +89,7 @@ const routes: Routes = [
     AppRoutingModule,
     EditorModule,
     MomentModule,
-    FacebookModule.forRoot(),
+    DisqusModule,
     TransferHttpCacheModule,
   ],
   providers: [

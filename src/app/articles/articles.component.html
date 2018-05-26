@@ -19,26 +19,26 @@
             <p [innerHTML]="article.body"></p>
         </div>
     </article>
-</div>
-<div id="comments" class="single_post_content">
-    <fb-comments href="{{url}}" data-numposts="10" data-width="100%"></fb-comments>
-</div>
-<div *ngIf="article != null" class="related_post single_post_content">
-    <h2>Related Post
-        <i class="fa fa-thumbs-o-up"></i>
-    </h2>
-    <ul class="spost_nav wow fadeInDown animated">
-        <li *ngFor="let item of relatedArticlesList">
-            <div class="media">
-                <a class="media-left" href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}">
-                    <img src="{{item.images.thumbnail}}" alt="{{item.subject}}">
-                </a>
-                <div class="media-body">
-                    <a class="catg_title" href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}">
-                        <h5>{{item.subject}}</h5>
+    <div id="comments" class="single_post_content">
+        <disqus-thread [page-identifier]="article_id" [page-url]="url"></disqus-thread>
+    </div>
+    <div *ngIf="article != null" class="related_post">
+        <h2>Related Post
+            <i class="fa fa-thumbs-o-up"></i>
+        </h2>
+        <ul class="spost_nav wow fadeInDown animated">
+            <li *ngFor="let item of relatedArticlesList">
+                <div class="media">
+                    <a class="media-left" href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}">
+                        <img src="{{item.images.thumbnail}}" alt="{{item.subject}}">
                     </a>
+                    <div class="media-body">
+                        <a class="catg_title" href="/articles/{{item.category.name | lowercase}}/{{item.sub_category.name | lowercase}}/{{item.uid}}">
+                            <h5>{{item.subject}}</h5>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </li>
-    </ul>
+            </li>
+        </ul>
+    </div>
 </div>
