@@ -171,6 +171,20 @@ export class UserService {
       ));
   }
 
+  contactus(name: String, email: String, subject: String, message: String) {
+    let body = undefined;
+    body = {
+      name: name,
+      email: email,
+      subject: subject,
+      message: message
+    }
+    return this.http.post(
+      Constants.API_ENDPOINT + '/auth/contactus', body, Constants.jwt()).pipe(map(
+        (response: Response) => response.json()
+      ));
+  }
+
   
   login(email: String, password: String) {
     let body = undefined;
