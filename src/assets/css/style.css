@@ -328,3 +328,6 @@ input {
 .rm-more{
     font-size: 12px;
 }
+
+img{max-width: 100% !important;}
+iframe{max-width: 100% !important;}
