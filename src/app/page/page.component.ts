@@ -216,4 +216,7 @@ export class PageComponent implements OnInit {
     });
     return htmlStr;
   }
+  parseString(str: string){
+    return str.replace(/\-/g," ");
+  }
 }

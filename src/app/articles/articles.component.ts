@@ -185,4 +185,8 @@ export class ArticlesComponent implements OnInit {
     )
   }
 
+  parseString(str: string){
+    return str.replace(/\-/g," ");
+  }
+
 }

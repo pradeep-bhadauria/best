@@ -104,4 +104,8 @@ export class AppComponent implements OnInit {
       document.location.href = "/";
     }
   }
+
+  parseString(str: string){
+    return str.replace(/\-/g," ");
+  }
 }

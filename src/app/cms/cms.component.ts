@@ -462,4 +462,8 @@ export class CmsComponent implements OnInit {
     );
 
   }
+
+  parseString(str: string){
+    return str.replace(/\-/g," ");
+  }
 }

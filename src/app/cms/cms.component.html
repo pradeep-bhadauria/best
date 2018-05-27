@@ -15,14 +15,14 @@
             <label>Category*</label>
             <select class="form-control" #category (change)="categoryChanged(category.value)"
             [(ngModel)]="selectedCategory">
-              <option *ngFor="let item of categoryList" value="{{item.id}}">{{item.name}}</option>
+              <option *ngFor="let item of categoryList" value="{{item.id}}">{{parseString(item.name) | titlecase}}</option>
             </select>
         </div>
         <div class="form-group col-md-6">
             <label>Sub Category*</label>
             <select class="form-control" #subcategory 
             [(ngModel)]="selectedSubCategory">
-              <option *ngFor="let item of subCategoryList" value="{{item.id}}">{{item.name}}</option>
+              <option *ngFor="let item of subCategoryList" value="{{item.id}}">{{parseString(item.name) | titlecase}}</option>
             </select>
         </div>
         <form>

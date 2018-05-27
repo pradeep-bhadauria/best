@@ -1,4 +1,9 @@
 <div class="single_post_content">
+    <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/articles/{{category | lowercase}}">{{parseString(category) | titlecase}}</a> </li>
+        <li class="active"><a href="/articles/{{category | lowercase}}/{{subcategory | lowercase}}">{{parseString(subcategory) | titlecase}}</a></li>
+    </ol>
     <article *ngIf="article != null">
         <h1>{{article.subject}}</h1>
         <div class="post_commentbox">
