@@ -331,3 +331,7 @@ input {
 
 img{max-width: 100% !important;}
 iframe{max-width: 100% !important;}
+html, body {
+    max-width: 100%;
+    overflow-x: hidden !important;
+}
