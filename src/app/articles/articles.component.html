@@ -22,6 +22,9 @@
                 <img *ngIf="article.images.banner != ''" class="img-center banner-image" src="{{article.images.banner}}" alt="">
             </div>
             <p [innerHTML]="article.body"></p>
+            <div>
+                <i class="fa fa-tags"></i> Keywords: <span *ngFor="let i of article.keywords"><span class="badge badge-info">{{i.keyword}}</span>&nbsp;</span>
+            </div>
         </div>
     </article>
     <div id="comments" class="single_post_content">
