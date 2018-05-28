@@ -47,13 +47,28 @@ export class UserService {
       ));
   }
 
-  updateEmail(user_id: string, email: string){
+  updateEmailLink(user_id: string, first_name:string, email: string){
     let body = undefined;
     body = {
-      user_email: email
+      id: user_id.toString(),
+      first_name: first_name,
+      email: email
     }
-    return this.http.put(
-      Constants.API_ENDPOINT + '/users/'+ user_id +'/email', body, Constants.jwt()).pipe(map(
+    return this.http.post(
+      Constants.API_ENDPOINT + '/auth/change-email-link', body, Constants.jwt()).pipe(map(
+        (response: Response) => response.json()
+      ));
+  }
+
+  updateEmail(user_id: string, email:string, token: string){
+    let body = undefined;
+    body = {
+      id: user_id.toString(),
+      token: token,
+      email: email
+    }
+    return this.http.post(
+      Constants.API_ENDPOINT + '/auth/change-email', body, Constants.jwt()).pipe(map(
         (response: Response) => response.json()
       ));
   }

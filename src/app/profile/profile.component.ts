@@ -39,10 +39,7 @@ export class ProfileComponent implements OnInit {
     private pageService: PageService,private meta: Meta,
     private title: Title
   ) {
-    this.user = JSON.parse(localStorage.getItem('currentUser'));
-    if(this.user == null){
-      document.location.href = "/login"
-    }
+    
   }
   ngOnInit(){
     this.meta.addTag({"robots":"noindex, nofollow"});
@@ -53,6 +50,46 @@ export class ProfileComponent implements OnInit {
         this.active = params['module'].trim();
       }
     });
+
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    if(this.user == null){
+      document.location.href = "/login"
+    }
+
+    this.route.queryParams.subscribe(params => {
+      var email="", id=null, token="";
+      if (params['email'] != undefined || params['token'] != undefined || params['check'] != undefined) {
+        if(params['email'] != undefined)
+          email = params['email'];
+        if(params['token'] != undefined)
+          token = params['token'];
+        if(params['check'] != undefined)
+          id = +params['check'];
+        if(email!="" && id!=null && token != ""){
+          if(this.user.id == id){
+            Constants.showLoader();
+            this.userService.updateEmail(id, email, token).subscribe(
+              data=>{this.alertService.success(data.message);},
+              error=>{
+                try{
+                  Constants.hideLoader();
+                  this.alertService.error(JSON.parse(error._body).message);
+                }
+                catch {  
+                  Constants.hideLoader();
+                  this.alertService.error("Server Error: Please try after some time.");
+                }
+              }
+            );
+          } else {
+            this.alertService.error("Error: Invalid request");  
+          }
+        } else {
+          this.alertService.error("Error: Invalid request");  
+        }
+      }
+    });
+
     this.getMyArticlesCount();
     this.getMyArticles();
   }
@@ -65,6 +102,7 @@ export class ProfileComponent implements OnInit {
             this.myArticles.push(element);  
           });
         }
+        this.more="Load More";
       }
     );
   }
@@ -81,6 +119,7 @@ export class ProfileComponent implements OnInit {
 
   getMore(){
     this.offset = this.offset + this.limit;
+    this.more="Loading...";
     if(this.offset < this.articleCount ){
       this.getMyArticles();
     } else {
@@ -92,7 +131,7 @@ export class ProfileComponent implements OnInit {
 
   changeEmail(){
     if(this.validate("email")){
-      this.userService.updateEmail(this.user.id, this.email).subscribe(
+      this.userService.updateEmailLink(this.user.id, this.user.fname, this.email).subscribe(
         data => {
           this.alertService.success(data.message);
         },

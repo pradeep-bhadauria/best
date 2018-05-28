@@ -169,6 +169,7 @@ export class PageComponent implements OnInit {
   }
 
   getMore() {
+    this.more = "Loading...";
     this.offset = this.offset + this.limit;
     if (this.offset < this.infiniteScrollCount) {
       if (this.displayFlag == 1) {
@@ -214,6 +215,7 @@ export class PageComponent implements OnInit {
         '</div>' +
         '</li>';
     });
+    this.more = "Load More";
     return htmlStr;
   }
   parseString(str: string){
