@@ -18,7 +18,6 @@ enableProdMode();
 const app = express();
 app.use(compression());
 
-
 const redirectowww = true;
 const redirectohttps = false;
 const wwwredirecto = false;
@@ -53,8 +52,18 @@ app.use((req, res, next) => {
 }
 );
 
+app.route('/robot.txt')
+  .get((req, res) => {
+    res.sendFile(join(DIST_FOLDER, 'robot.txt'));
+  });
 
-const PORT = process.env.PORT || 4000;
+app.route('/sitemap.xml')
+  .get((req, res) => {
+    res.sendFile(join(DIST_FOLDER, 'sitemap.xml'));
+  });
+
+
+const PORT = process.env.PORT || 4200;
 const DIST_FOLDER = join(process.cwd(), 'dist');
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
