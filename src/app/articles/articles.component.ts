@@ -47,6 +47,7 @@ export class ArticlesComponent implements OnInit {
 
     if (isPlatformBrowser(this.platformId)) {
       this.url = document.location.href;
+      this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
     }
 
     this.route.params.subscribe(params => {
@@ -64,12 +65,15 @@ export class ArticlesComponent implements OnInit {
             if (isPlatformBrowser(this.platformId)) {
               document.location.href = "/404";
             }
-          } else if (this.currentUser != null &&
-            this.currentUser.id != temp.author.id &&
-            temp.is_published != Constants.DEFAULT.PUBLISHED &&
-            this.currentUser.tid != Constants.ROLES.ADMIN) {
-            if (isPlatformBrowser(this.platformId)) {
-              document.location.href = "/404";
+          } else if (
+            this.currentUser != null 
+            && temp.is_published != Constants.DEFAULT.PUBLISHED 
+            && this.currentUser.id != temp.author.id
+          ) {
+            if(this.currentUser.tid != Constants.ROLES.ADMIN){
+              if (isPlatformBrowser(this.platformId)) {
+                document.location.href = "/404";
+              }
             }
           } else {
             this.article = temp;
