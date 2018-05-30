@@ -131,7 +131,9 @@ export class ArticlesComponent implements OnInit {
                 this.alertService.error("Server Error: Please try after some time.");
               }
             );
-            this.pageView();
+            if( temp.is_published == Constants.DEFAULT.PUBLISHED ){
+              this.pageView();
+            }
           }
         } else {
           if (isPlatformBrowser(this.platformId)) {
