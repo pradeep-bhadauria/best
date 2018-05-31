@@ -56,8 +56,8 @@ export class RegistrationComponent implements OnInit {
       this.email_err = ""
     }
 
-    if (this.password.length < 6 || this.password.length > 30) {
-      this.password_err = "Should be between 6 - 30 characters"; allGood = false;
+    if (this.password.length < 7 || this.password.length > 30) {
+      this.password_err = "Should be between 7 - 30 characters"; allGood = false;
     } 
     else if(!this.isValidPassword(this.password)){
       this.password_err = "Can contain A-Z a-z 0-9 _ - ! @ # $ % & * ( )"; allGood = false;
