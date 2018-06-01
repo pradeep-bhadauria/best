@@ -89,7 +89,7 @@ img:hover{opacity:0.75}
 .social_area{ position:absolute; right:0; top:0; background:#fff; border-top:1px solid #ccc; border-bottom:1px solid #ccc; border-right:1px solid #ccc; height:30px}
 .social_nav{ text-align:right}
 .social_nav li{ display:block; float:left}
-.social_nav li a{ display:block; float:left; height:30px; text-indent:-9999px; width:30px; border-left:1px solid #ccc; -webkit-transition:all 0.5s; -moz-transition:all 0.5s; -ms-transition:all 0.5s;  -o-transition:all 0.5s; transition:all 0.5s}
+.social_nav li a{ display:block; float:left; height:29px; text-indent:-9999px; width:30px; border-left:1px solid #ccc; -webkit-transition:all 0.5s; -moz-transition:all 0.5s; -ms-transition:all 0.5s;  -o-transition:all 0.5s; transition:all 0.5s}
 .social_nav li.facebook a{ background-image:url("images/socials.png"); background-position:0 -30px; background-size:270px 60px}
 .social_nav li.facebook a:hover{ background-position:0 0px; background-size:270px 60px; background-color:#436eac}
 .social_nav li.twitter a{ background-image:url("images/socials.png"); background-position:-30px -30px; background-size:270px 60px}
@@ -334,4 +334,10 @@ iframe{max-width: 100% !important;}
 html, body {
     max-width: 100%;
     overflow-x: hidden !important;
+}
+.media-body a h4 {
+    margin: 0px;
+    font-size: 14px;
+    line-height: 19px;
+    font-weight: 500;
 }
