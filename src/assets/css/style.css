@@ -329,7 +329,7 @@ input {
     font-size: 12px;
 }
 
-img{max-width: 100% !important;}
+img{max-width: 100% !important;height: auto !important;}
 iframe{max-width: 100% !important;}
 html, body {
     max-width: 100%;
