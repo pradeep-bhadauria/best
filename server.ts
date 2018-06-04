@@ -59,6 +59,15 @@ app.route('/robot.txt')
 
 app.route('/sitemap.xml')
   .get((req, res) => {
+    var exec = require('child_process').exec;
+    var command = 'curl "https://ws.behindstories.com/sitemap.xml"'
+    var child = exec(command, function(error, stdout, stderr){
+      var fs = require('fs');
+      fs.writeFile(join(DIST_FOLDER, 'sitemap.xml'), stdout, function(err) {
+        //console.log("crawled new sites");
+      });
+    });
+    //console.log("returning new sitemap.xml");
     res.sendFile(join(DIST_FOLDER, 'sitemap.xml'));
   });
 
