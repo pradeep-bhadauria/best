@@ -35,6 +35,11 @@
                 "glob": "sitemap.xml",
                 "input": "src",
                 "output": "./../"
+              },
+              {
+                "glob": "hourly.sh",
+                "input": "src",
+                "output": "./../"
               }
             ],
             "styles": [

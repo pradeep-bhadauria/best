@@ -1,0 +1,1 @@
+curl https://ws.behindstories.com/sitemap.xml > sitemap.xml

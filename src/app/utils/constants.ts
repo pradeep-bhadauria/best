@@ -3,7 +3,7 @@ import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 export class Constants {
-  public static API_ENDPOINT = 'http://ws.behindstories.com';
+  public static API_ENDPOINT = 'https://ws.behindstories.com';
   //public static API_ENDPOINT='http://localhost:5000';
 
   public static LOADING = false;
