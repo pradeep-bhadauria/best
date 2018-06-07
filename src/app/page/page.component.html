@@ -6,6 +6,18 @@
       <li *ngIf="subcategory != null" [ngClass]="{'active': subcategory !== null}"><a href="/articles/{{category | lowercase}}/{{subcategory | lowercase}}">{{parseString(subcategory) | titlecase}} <span *ngIf="displayFlag == 2">({{infiniteScrollCount}})</span></a></li>
     </ol>
 
+    <div class="banner-ads">
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- banner -->
+      <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-7980807581572343"
+            data-ad-slot="3594313664"
+            data-ad-format="auto"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
     <div *ngIf="displayFlag == 4">
       <ul class="article-list" *ngIf="articeBySearch != ''" [innerHTML]="articeBySearch"></ul>
       <div class="loadmore">
