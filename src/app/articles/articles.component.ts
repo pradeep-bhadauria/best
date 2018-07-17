@@ -162,8 +162,8 @@ export class ArticlesComponent implements OnInit {
           this.updateView();
         }
       } else {
-        this.viewedList.push({ k: this.article_id });
         localStorage.setItem("aid", JSON.stringify(this.viewedList));
+        this.updateView();
       }
     }
   }

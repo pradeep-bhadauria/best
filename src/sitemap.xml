@@ -2,10 +2,64 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://www.behindstories.com</loc>
-        <lastmod>2018-07-11T03:40:56+00:00</lastmod>
+        <lastmod>2018-07-17T09:03:30+00:00</lastmod>
         <changefreq>always</changefreq>
         <priority>1.0</priority>
     </url>
+    
+    <url>
+        <loc>https://www.behindstories.com/articles/entertainment/celebrities/britney-spears-would-definitely-be-up-for-a-mickey-mouse-club-reunion
+        </loc>
+        <lastmod>2018-07-17T09:03:30+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    
+    <url>
+        <loc>https://www.behindstories.com/articles/technology/gadgets/apple-debuts-upgraded-pro-laptops-ahead-of-fall-product-blitz
+        </loc>
+        <lastmod>2018-07-17T08:40:47+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    
+    <url>
+        <loc>https://www.behindstories.com/articles/lifestyle/food/saladstop-pledges-to-use-only-cage-free-eggs
+        </loc>
+        <lastmod>2018-07-17T08:35:24+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    
+    <url>
+        <loc>https://www.behindstories.com/articles/business/entrepreneur/adidas-joins-the-fight-against-plastic
+        </loc>
+        <lastmod>2018-07-17T08:28:17+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    
+    <url>
+        <loc>https://www.behindstories.com/articles/business/finance/warren-buffett-just-gave-3-4-billion-to-charity
+        </loc>
+        <lastmod>2018-07-17T08:25:14+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    
+    <url>
+        <loc>https://www.behindstories.com/articles/sports/football/fifa-2018-croatia-vs-france-will-croatia-make-a-history-
+        </loc>
+        <lastmod>2018-07-15T11:16:49+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
     
     <url>
         <loc>https://www.behindstories.com/articles/technology/gadgets/samsung-planning-white-galaxy-tab-s4-
