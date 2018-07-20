@@ -2,10 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://www.behindstories.com</loc>
-        <lastmod>2018-07-17T09:03:30+00:00</lastmod>
+        <lastmod>2018-07-19T09:43:48+00:00</lastmod>
         <changefreq>always</changefreq>
         <priority>1.0</priority>
     </url>
+    
+    <url>
+        <loc>https://www.behindstories.com/articles/lifestyle/travel/singapore-airlines-to-add-4th-daily-flight-to-tokyo-s-haneda
+        </loc>
+        <lastmod>2018-07-19T09:43:48+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    
+    <url>
+        <loc>https://www.behindstories.com/articles/news/world/indonesia-sees-7-brutal-animal-killings-in-2018
+        </loc>
+        <lastmod>2018-07-19T05:49:13+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
     
     <url>
         <loc>https://www.behindstories.com/articles/entertainment/celebrities/britney-spears-would-definitely-be-up-for-a-mickey-mouse-club-reunion
