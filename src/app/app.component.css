@@ -64,6 +64,12 @@
     pointer-events: none;
     color: #555555;
   }
+  .popular_posts{
+    height: 300px;
+  }
+  .cat_links{
+    height: 111px;
+  }
   .web-ads{
     height:275px;
   }
