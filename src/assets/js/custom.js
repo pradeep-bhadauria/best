@@ -47,7 +47,7 @@ jQuery(document).ready(function() {
             $("ul#ticker01").liScroll();
             clearInterval(tickerCheck);
         }
-    },1000);
+    },1);
 
     var sliderChecker = setInterval(function(){
         if($("#slidershow").val() != 0){
@@ -63,7 +63,7 @@ jQuery(document).ready(function() {
                 cssEase: 'linear'
             });
         }
-    },1000);
+    },1);
 });
 
 /*
