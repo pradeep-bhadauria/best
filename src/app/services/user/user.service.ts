@@ -26,7 +26,7 @@ export class UserService {
       user_dob: dob,
       user_email: email,
       user_fname: fname,
-      user_level: Constants.ROLES.VIEWERS,
+      user_level: Constants.ROLES.AUTHORS,
       user_lname: lname,
       user_password: password
     }
