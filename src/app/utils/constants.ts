@@ -47,7 +47,7 @@ export class Constants {
     ENTERTAINMENT: "Entertainment",
     TECHNOLOGY: "Technology",
     BUSINESS: "Business",
-    NEWS: "News",
+    NEWS: "Stories",
     SPORTS: "Sports",
     HUMOUR: "Humour"
   }
